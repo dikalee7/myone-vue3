@@ -2,10 +2,20 @@ import { createWebHistory, createRouter } from 'vue-router';
 import MainRouter from '@/domains/main/router/index';
 import TrafficRouter from '@/domains/traffic/router/index';
 import NotFound from '@/views/NotFoundPage.vue';
+import Home from '@/views/HomeView.vue';
 
 const rt = createRouter({
   history: createWebHistory(),
   routes: [
+    {
+      path: '/',
+      redirect: '/home',
+    },
+    {
+      path: '/home',
+      name: 'home',
+      component: Home,
+    },
     {
       path: '/notFound',
       name: 'notFound',
