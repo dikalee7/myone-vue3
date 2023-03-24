@@ -1,8 +1,14 @@
-import axios from 'axios';
+import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
+import { IFHuman } from '@/domains/main/type';
 
-function registerUser() {
-  const url = 'http://localhost:3000/signup';
-  axios.post(url);
+const axiosConfig: AxiosRequestConfig = {
+  baseURL: process.env.VUE_APP_API_URL,
+};
+
+const instance: AxiosInstance = axios.create(axiosConfig);
+
+function registerUser(data: IFHuman) {
+  instance.post('signup', data);
 }
 
 export { registerUser };

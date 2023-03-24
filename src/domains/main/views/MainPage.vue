@@ -14,7 +14,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { registerUser } from '@/api/index';
-
+import { IFHuman } from '../type';
 export default defineComponent({
   setup() {
     return {};
@@ -34,7 +34,12 @@ export default defineComponent({
   methods: {
     submitForm() {
       console.log('submitForm');
-      registerUser();
+      const testV: IFHuman = {
+        username: 'test1username',
+        password: 'test1username',
+        nicname: 'test1nicname',
+      };
+      registerUser(testV);
     },
   },
 });
