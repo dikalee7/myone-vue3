@@ -2,6 +2,13 @@
   <v-app>
     <v-main>
       <router-view />
+      <v-overlay :model-value="overlay" class="align-center justify-center">
+        <v-progress-circular
+          color="primary"
+          indeterminate
+          size="64"
+        ></v-progress-circular>
+      </v-overlay>
     </v-main>
   </v-app>
 </template>
@@ -14,7 +21,7 @@ export default defineComponent({
 
   data() {
     return {
-      //
+      overlay: false,
     };
   },
 });

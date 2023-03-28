@@ -6,6 +6,14 @@ module.exports = defineConfig({
     client: {
       overlay: false,
     },
+    // proxy: {
+    //   '/': {
+    //     target: 'http://apis.data.go.kr',
+    //     pathRewrite: { '^/': '' },
+    //     changeOrigin: true,
+    //     secure: false,
+    //   },
+    // },
   },
 
   pluginOptions: {
