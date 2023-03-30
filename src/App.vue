@@ -2,27 +2,17 @@
   <v-app>
     <v-main>
       <router-view />
-      <v-overlay :model-value="overlay" class="align-center justify-center">
-        <v-progress-circular
-          color="primary"
-          indeterminate
-          size="64"
-        ></v-progress-circular>
-      </v-overlay>
+      <LoadingOverlay />
     </v-main>
   </v-app>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import LoadingOverlay from './components/LoadingOverlay.vue';
 
 export default defineComponent({
+  components: { LoadingOverlay },
   name: 'App',
-
-  data() {
-    return {
-      overlay: false,
-    };
-  },
 });
 </script>

@@ -5,5 +5,6 @@ export default [
       import(
         /* webpackChunkName: "main" */ '@/domains/main/views/MainPage.vue'
       ),
+    meta: { isLoading: true, continueLoading: false },
   },
 ];

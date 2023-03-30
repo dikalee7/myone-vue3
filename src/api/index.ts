@@ -1,4 +1,5 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
+import { cmn as $cmn } from '@/util/cmn';
 
 const axiosConfig: AxiosRequestConfig = {
   baseURL: process.env.VUE_APP_API_BILLINFO_URL,
@@ -13,14 +14,14 @@ instance.defaults.timeout = 2500;
 instance.interceptors.request.use(
   (config) => {
     //요청을 보내기 전에 수행할 로직
-    console.log('************ AXIOS REQUEST ************');
-    console.log(JSON.stringify(config, null, 2));
+    $cmn.setLoading(true);
     return config;
   },
   (error) => {
     //요청 에러가 발생했을 때 수행할 로직
     console.log('************ AXIOS REQUEST ERROR ************');
     console.log(JSON.stringify(error, null, 2));
+    $cmn.setLoading(false);
     return Promise.reject(error);
   },
 );
@@ -29,16 +30,15 @@ instance.interceptors.request.use(
 instance.interceptors.response.use(
   (response) => {
     //응답에 대한 로직 작성
-    const res = response;
-    console.log('************ AXIOS RESPONSE ************');
-    console.log(JSON.stringify(res, null, 2));
-    return res;
+    $cmn.setLoading(false);
+    return response;
   },
 
   (error) => {
     //응답 에러가 발생했을 때 수행할 로직
     console.log('************ AXIOS RESPONSE ERROR ************');
     console.log(JSON.stringify(error, null, 2));
+    $cmn.setLoading(false);
     return Promise.reject(error);
   },
 );

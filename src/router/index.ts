@@ -1,6 +1,7 @@
 import { createWebHistory, createRouter } from 'vue-router';
 import MainRouter from '@/domains/main/router/index';
 import TrafficRouter from '@/domains/traffic/router/index';
+import { cmn as $cmn } from '@/util/cmn';
 
 const rt = createRouter({
   history: createWebHistory(),
@@ -30,6 +31,15 @@ const rt = createRouter({
     ...MainRouter,
     ...TrafficRouter,
   ],
+});
+
+rt.beforeEach((to, from, next) => {
+  if (to.meta.isLoading) $cmn.setLoading(true);
+  next();
+});
+
+rt.afterEach((to) => {
+  $cmn.setLoading(to.meta.continueLoading as boolean);
 });
 
 export default rt;
