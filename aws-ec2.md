@@ -139,7 +139,7 @@ free -h
 
 ```
 
->AWS 서버에 AMI Nginx 설치
+>EC2 인스턴스에 AMI Nginx 설치
 
 ```
 
