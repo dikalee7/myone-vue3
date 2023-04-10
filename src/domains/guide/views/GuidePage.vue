@@ -1,7 +1,7 @@
 <template>
   <v-main>
     <v-container fluid>
-      <v-card title="AWS EC2에 Jenkins 설치 및 Vuejs 배포 과정">
+      <v-card title="AWS EC2 VueJS 배포">
         <!-- variant : default / accordion / inset /popout -->
         <v-expansion-panels
           variant="default"
@@ -13,7 +13,7 @@
             <v-expansion-panel-title>
               AWS EC2 "Linux t2.micro" 인스턴스 생성
             </v-expansion-panel-title>
-            <v-expansion-panel-text>
+            <v-expansion-panel-text class="text-sm-left">
               <v-card>
                 <v-card-item>
                   프리티어가 적용되는 Linux t2.micro 유형으로 생성
@@ -39,7 +39,7 @@
             <v-expansion-panel-title>
               EC2 인스턴스에 JAVA 설치
             </v-expansion-panel-title>
-            <v-expansion-panel-text>
+            <v-expansion-panel-text class="text-sm-left">
               <v-card>
                 <v-card-item>
                   Jenkins 설치를 위해 JAVA 설치(11버전)
@@ -66,19 +66,19 @@
             <v-expansion-panel-title>
               EC2 인스턴스에 Jenkins 설치
             </v-expansion-panel-title>
-            <v-expansion-panel-text>
+            <v-expansion-panel-text class="text-sm-left">
               <v-card>
                 <v-card-item>
                   <span :class="infoCls"> {{ extLinkInfo[1].linkText }} </span>
-                  &nbsp;
+                  <br />
                   <v-btn
                     border
                     class="bg-light-blue-darken-4"
-                    prepend-icon="mdi-check"
                     variant="text"
                     size="x-small"
                     @click="fnGoGlink(1)"
                   >
+                    <!-- prepend-icon="mdi-check" -->
                     이동
                   </v-btn>
                   <br />
@@ -92,7 +92,7 @@
             <v-expansion-panel-title>
               EC2 인스턴스에 Git 설치
             </v-expansion-panel-title>
-            <v-expansion-panel-text>
+            <v-expansion-panel-text class="text-sm-left">
               <v-card>
                 <v-card-item>
                   #Perform a quick update on your instance<br />
@@ -114,7 +114,7 @@
             <v-expansion-panel-title>
               Github webhook 설정
             </v-expansion-panel-title>
-            <v-expansion-panel-text>
+            <v-expansion-panel-text class="text-sm-left">
               <v-card>
                 <v-card-item>
                   배포할 GitHub Repository <br />
@@ -138,7 +138,7 @@
             <v-expansion-panel-title>
               Github Personal access tokens
             </v-expansion-panel-title>
-            <v-expansion-panel-text>
+            <v-expansion-panel-text class="text-sm-left">
               <v-card>
                 <v-card-item>
                   GitHub > 개인 프로필 > Settings > Developer settings<br />
@@ -153,7 +153,7 @@
             <v-expansion-panel-title>
               Jenkins Github 연결 및 item 생성
             </v-expansion-panel-title>
-            <v-expansion-panel-text>
+            <v-expansion-panel-text class="text-sm-left">
               <v-card>
                 <v-card-item>
                   배포할 VueJS 젠킨스 빌드를 위하여 NodeJS 관련 설정<br />
@@ -200,7 +200,7 @@
             <v-expansion-panel-title>
               스왑 파일을 이용한 스왑 공간 할당
             </v-expansion-panel-title>
-            <v-expansion-panel-text>
+            <v-expansion-panel-text class="text-sm-left">
               <v-card>
                 <v-card-item>
                   # swapfile 메모리를 할당<br />
@@ -241,7 +241,7 @@
             <v-expansion-panel-title>
               EC2 인스턴스에 AMI Nginx 설치
             </v-expansion-panel-title>
-            <v-expansion-panel-text>
+            <v-expansion-panel-text class="text-sm-left">
               <v-card>
                 <v-card-item>
                   #설치<br />
@@ -293,7 +293,11 @@ server {
       <v-card :class="dvCls">
         <v-card-item>
           참고한 사이트 <br />
-          <v-card-text v-for="(item, index) in extLinkInfo" :key="index">
+          <v-card-text
+            v-for="(item, index) in extLinkInfo"
+            :key="index"
+            class="vSpace"
+          >
             <span :class="infoCls">
               {{ item.linkText }}
             </span>
@@ -330,7 +334,7 @@ export default defineComponent({
       infoCls: 'text-body-2 pa-1 bg-green-darken-2',
       accCls: 'text-body-2 pa-1 bg-orange-accent-4',
       dvCls: 'mt-5 mb-3',
-      cmdCls: 'bg-grey-darken-4 mt-1',
+      cmdCls: 'bg-grey-darken-4 mt-1 vSpace',
       extLinkInfo: [
         {
           linkText: 'AWS 에 Jenkins와 Nginx 이용하여 vue project 올리기',
@@ -366,4 +370,17 @@ export default defineComponent({
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+button {
+  margin: 5px 0px 5px;
+}
+.vSpace {
+  white-space: nowrap;
+  overflow: auto;
+}
+
+.text-sm-left {
+  font-size: small;
+  text-align: left;
+}
+</style>
