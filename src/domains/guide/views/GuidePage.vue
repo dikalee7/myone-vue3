@@ -69,20 +69,18 @@
             <v-expansion-panel-text class="text-sm-left">
               <v-card>
                 <v-card-item>
-                  <span :class="infoCls"> {{ extLinkInfo[1].linkText }} </span>
-                  <br />
-                  <v-btn
-                    border
-                    class="bg-light-blue-darken-4"
-                    variant="text"
-                    size="x-small"
-                    @click="fnGoGlink(1)"
-                  >
-                    <!-- prepend-icon="mdi-check" -->
-                    이동
-                  </v-btn>
-                  <br />
-                  {{ extLinkInfo[1].url }}
+                  <span :class="accCls"> rpm 패키지 다운로드 및 설치 </span>
+                  <v-card-text :class="cmdCls">
+                    <pre>
+sudo wget -O /etc/yum.repos.d/jenkins.repo \
+https://pkg.jenkins.io/redhat-stable/jenkins.repo
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+sudo yum upgrade
+# Add required dependencies for the jenkins package
+sudo yum install jenkins
+sudo systemctl daemon-reload             
+                    </pre>
+                  </v-card-text>
                 </v-card-item>
               </v-card>
             </v-expansion-panel-text>
@@ -293,27 +291,16 @@ server {
       <v-card :class="dvCls">
         <v-card-item>
           참고한 사이트 <br />
-          <v-card-text
-            v-for="(item, index) in extLinkInfo"
-            :key="index"
-            class="vSpace"
-          >
-            <span :class="infoCls">
-              {{ item.linkText }}
-            </span>
-            &nbsp;
-            <v-btn
-              border
-              class="bg-light-blue-darken-4"
-              prepend-icon="mdi-check"
-              variant="text"
-              size="x-small"
-              @click="fnGoGlink(index)"
-            >
-              이동
-            </v-btn>
-            <br />
-            {{ item.url }}
+          <v-card-text class="vSpace">
+            <div v-for="(item, index) in extLinkInfo" :key="index" class="mb-5">
+              <span>
+                {{ item.linkText }}
+              </span>
+              <br />
+              <span class="linkCls" @click="fnGoGlink(index)">
+                {{ item.url }}
+              </span>
+            </div>
           </v-card-text>
         </v-card-item>
       </v-card>
@@ -331,13 +318,13 @@ export default defineComponent({
   data() {
     return {
       panel: [0, 1, 2, 3, 4, 5, 6, 7, 8],
-      infoCls: 'text-body-2 pa-1 bg-green-darken-2',
+      infoCls: 'text-sm-left pa-1 bg-green-darken-2',
       accCls: 'text-body-2 pa-1 bg-orange-accent-4',
       dvCls: 'mt-5 mb-3',
       cmdCls: 'bg-grey-darken-4 mt-1 vSpace',
       extLinkInfo: [
         {
-          linkText: 'AWS 에 Jenkins와 Nginx 이용하여 vue project 올리기',
+          linkText: 'AWS 에 Jenkins와 Nginx 이용하여 vue 배포',
           url: 'https://zakelstorm.tistory.com/133',
         },
         {
@@ -349,7 +336,7 @@ export default defineComponent({
           url: 'https://daily-life-of-bsh.tistory.com/223',
         },
         {
-          linkText: 'Swap File을 이용해 EC2 메모리 부족 현상을 해결',
+          linkText: 'EC2 Swap File 적용',
           url: 'https://kth990303.tistory.com/361',
         },
         {
@@ -382,5 +369,10 @@ button {
 .text-sm-left {
   font-size: small;
   text-align: left;
+}
+
+.linkCls {
+  color: blue;
+  cursor: pointer;
 }
 </style>
