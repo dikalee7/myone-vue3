@@ -264,7 +264,8 @@ sudo systemctl daemon-reload
                 <v-card-item>
                   젠킨스 서버 설정<br />
                   /etc/nginx/conf.d/default.conf 생성하여 아래 내용 입력<br />
-                  - default 파일명은 다른 이름으로 하여도 무관함
+                  - default 파일명은 다른 이름으로 하여도 무관함<br />
+                  - EC2 Https 설정 후 redirect 처리 추가
                   <v-card-text :class="cmdCls">
                     <pre>
 server {
@@ -278,6 +279,12 @@ server {
   location / {
     try_files $uri $uri/ /index.html;
   }
+
+  #https redirect
+  if ($http_x_forwarded_proto = 'http'){
+    return 301 https://$host$request_uri;
+  }
+
 }                    
                   </pre
                     >
@@ -342,6 +349,14 @@ export default defineComponent({
         {
           linkText: 'AWS EC2 도메인 연결(가비아)',
           url: 'https://sovovy.tistory.com/37',
+        },
+        {
+          linkText: 'AWS EC2 HTTPS 적용',
+          url: 'https://kingofbackend.tistory.com/197',
+        },
+        {
+          linkText: 'nginx https redirect',
+          url: 'https://jw910911.tistory.com/89',
         },
       ],
     };
