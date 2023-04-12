@@ -6,12 +6,7 @@
       prepend-icon="mdi-cube"
     >
       <!-- variant : default / accordion / inset /popout -->
-      <v-expansion-panels
-        variant="default"
-        class="pa-0"
-        v-model="panel"
-        multiple
-      >
+      <v-expansion-panels variant="default" class="pa-0" v-model="panel">
         <v-expansion-panel>
           <v-expansion-panel-title class="ma-0">
             AWS EC2 인스턴스 생성
@@ -323,7 +318,7 @@ export default defineComponent({
   },
   data() {
     return {
-      panel: [], //0, 1, 2, 3, 4, 5, 6, 7, 8
+      panel: [0], //0, 1, 2, 3, 4, 5, 6, 7, 8
       infoCls: 'text-sm-left pa-1 bg-green-darken-2',
       accCls: 'text-body-2 pa-1 bg-orange-accent-4',
       dvCls: 'mt-5 mb-3',

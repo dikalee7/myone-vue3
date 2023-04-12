@@ -23,7 +23,7 @@ export const HeaderModule: Module<IFHeaderModule, RootState> = {
       title: '가이드',
       isShow: true,
       isHome: true,
-      isBack: false,
+      isBack: true,
     },
   }),
   mutations: {
