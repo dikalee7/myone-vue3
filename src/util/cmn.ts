@@ -9,7 +9,8 @@ interface IFCmn {
 
 const cmn: IFCmn = {
   setLoading: (f: boolean) => {
-    store.commit('setPageLoading', f);
+    store.dispatch('LoadingModule/setPageLoading', f);
+    // store.commit('LoadingModule/setPageLoading', f);
   },
   cmnTest: () => {
     console.log('cmnTest');

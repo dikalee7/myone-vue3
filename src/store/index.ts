@@ -1,17 +1,12 @@
 import { createStore } from 'vuex';
+import { LoadingModule, IFLoadingModule } from '@/store/modules/pageLoading';
+import { HeaderModule, IFHeaderModule } from '@/store/modules/headerInfo';
+
+export interface RootState {
+  LoadingModule: IFLoadingModule;
+  HeaderModule: IFHeaderModule;
+}
 
 export default createStore({
-  state: {
-    pageLoading: false,
-  },
-  getters: {
-    isLoading(state) {
-      return state.pageLoading;
-    },
-  },
-  mutations: {
-    setPageLoading(state, pageLoading) {
-      state.pageLoading = pageLoading;
-    },
-  },
+  modules: { LoadingModule, HeaderModule },
 });
