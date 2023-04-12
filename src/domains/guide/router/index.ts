@@ -3,6 +3,15 @@ export default [
     path: '/guide',
     component: () =>
       import(
+        /* webpackChunkName: "guide" */ '@/domains/guide/views/GuideMain.vue'
+      ),
+    meta: { isLoading: true, continueLoading: false },
+  },
+
+  {
+    path: '/guidePage',
+    component: () =>
+      import(
         /* webpackChunkName: "guide" */ '@/domains/guide/views/GuidePage.vue'
       ),
     meta: { isLoading: true, continueLoading: false },
