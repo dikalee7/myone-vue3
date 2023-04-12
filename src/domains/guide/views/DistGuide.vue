@@ -367,21 +367,5 @@ export default defineComponent({
 </script>
 
 <style scoped>
-button {
-  margin: 5px 0px 5px;
-}
-.vSpace {
-  white-space: nowrap;
-  overflow: auto;
-}
-
-.text-sm-left {
-  font-size: small;
-  text-align: left;
-}
-
-.linkCls {
-  color: blue;
-  cursor: pointer;
-}
+@import '/src/assets/css/guide.css';
 </style>

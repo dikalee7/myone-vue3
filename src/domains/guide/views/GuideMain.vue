@@ -13,11 +13,11 @@
     <v-window v-model="tab">
       <v-window-item key="tab1" value="tab1">
         <v-card color="basil" flat>
-          <GuidePage />
+          <DistGuide />
         </v-card>
       </v-window-item>
       <v-window-item key="tab2" value="tab2">
-        <v-card color="basil" flat> 가이드 작성중 </v-card>
+        <v-card color="basil" flat> <ApiGuide /> </v-card>
       </v-window-item>
       <v-window-item key="tab3" value="tab3">
         <v-card color="basil" flat> 가이드 작성중 </v-card>
@@ -28,14 +28,15 @@
 
 <script lang="ts">
 import { defineComponent, Ref, ref } from 'vue';
-import GuidePage from './GuidePage.vue';
+import ApiGuide from './ApiGuide.vue';
+import DistGuide from './DistGuide.vue';
 
 interface IFItem {
   id: string;
   name: string;
 }
 export default defineComponent({
-  components: { GuidePage },
+  components: { DistGuide, ApiGuide },
   setup() {
     const tab = ref('tab1');
     const items: Ref<IFItem[]> = ref([
