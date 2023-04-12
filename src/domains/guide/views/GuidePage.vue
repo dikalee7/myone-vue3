@@ -1,6 +1,10 @@
 <template>
   <v-container fluid>
-    <v-card title="AWS EC2 VueJS 배포">
+    <v-card
+      title="AWS EC2 VueJS 배포"
+      subtitle="Jeinkins, Github 연동하여 배포"
+      prepend-icon="mdi-cube"
+    >
       <!-- variant : default / accordion / inset /popout -->
       <v-expansion-panels
         variant="default"
@@ -319,7 +323,7 @@ export default defineComponent({
   },
   data() {
     return {
-      panel: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+      panel: [], //0, 1, 2, 3, 4, 5, 6, 7, 8
       infoCls: 'text-sm-left pa-1 bg-green-darken-2',
       accCls: 'text-body-2 pa-1 bg-orange-accent-4',
       dvCls: 'mt-5 mb-3',
