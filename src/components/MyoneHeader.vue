@@ -12,7 +12,7 @@
     </template> -->
     <v-icon class="ml-5" v-if="!hInfo.isBack">mdi-one-up</v-icon>
 
-    <v-btn icon v-if="hInfo.isBack">
+    <v-btn icon v-if="hInfo.isBack" @click="goBack">
       <v-icon>mdi-arrow-left-circle</v-icon>
     </v-btn>
 
@@ -24,7 +24,7 @@
       <v-icon>mdi-magnify</v-icon>
     </v-btn> -->
 
-    <v-btn icon v-if="hInfo.isHome">
+    <v-btn icon v-if="hInfo.isHome" @click="goHome">
       <v-icon>mdi-home-circle</v-icon>
     </v-btn>
     <!-- <v-app-bar-nav-icon></v-app-bar-nav-icon> -->
@@ -45,9 +45,22 @@ export default defineComponent({
     );
     // const isHome = computed(() => hInfo.isHome);
     // const isBack = computed(() => hInfo.isBack);
+
     return {
       hInfo: value,
     };
+  },
+  methods: {
+    goBack() {
+      if (window.history.state.back === null) {
+        this.goHome();
+      } else {
+        this.$router.back();
+      }
+    },
+    goHome() {
+      this.$router.push('/');
+    },
   },
 });
 </script>

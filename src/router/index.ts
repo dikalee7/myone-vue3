@@ -36,6 +36,7 @@ const rt = createRouter({
 });
 
 rt.beforeEach((to, from, next) => {
+  console.log(to);
   if (to.meta.isLoading) $cmn.setLoading(true);
   next();
 });
