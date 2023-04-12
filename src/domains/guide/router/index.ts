@@ -9,10 +9,10 @@ export default [
   },
 
   {
-    path: '/guidePage',
+    path: '/distGuide',
     component: () =>
       import(
-        /* webpackChunkName: "guide" */ '@/domains/guide/views/GuidePage.vue'
+        /* webpackChunkName: "guide" */ '@/domains/guide/views/DistGuide.vue'
       ),
     meta: { isLoading: true, continueLoading: false },
   },
@@ -21,7 +21,7 @@ export default [
     name: 'glink',
     component: () =>
       import(
-        /* webpackChunkName: "guide" */ '@/domains/guide/views/GuidePage.vue'
+        /* webpackChunkName: "guide" */ '@/domains/guide/views/DistGuide.vue'
       ),
     beforeEnter(to: { query: { extUrl?: string } }) {
       if (to.query.extUrl) {
