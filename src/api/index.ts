@@ -1,4 +1,4 @@
-import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
+import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 import { cmn as $cmn } from '@/util/cmn';
 
 const axiosConfig: AxiosRequestConfig = {
@@ -28,10 +28,15 @@ instance.interceptors.request.use(
 
 //응답 인터셉터 추가
 instance.interceptors.response.use(
-  (response) => {
+  (response): any => {
     //응답에 대한 로직 작성
     $cmn.setLoading(false);
-    return response;
+    const result = {
+      status: response.data.response.header.resultCode,
+      statusText: response.data.response.header.resultMsg,
+      data: response.data.response.body.items.item,
+    };
+    return result;
   },
 
   (error) => {

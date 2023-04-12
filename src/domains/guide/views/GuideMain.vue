@@ -17,7 +17,7 @@
         </v-card>
       </v-window-item>
       <v-window-item key="tab2" value="tab2">
-        <v-card color="basil" flat> 가이드 작성중 </v-card>
+        <v-card color="basil" flat> <ApiGuide /> </v-card>
       </v-window-item>
       <v-window-item key="tab3" value="tab3">
         <v-card color="basil" flat> 가이드 작성중 </v-card>
@@ -28,6 +28,7 @@
 
 <script lang="ts">
 import { defineComponent, Ref, ref } from 'vue';
+import ApiGuide from './ApiGuide.vue';
 import DistGuide from './DistGuide.vue';
 
 interface IFItem {
@@ -35,7 +36,7 @@ interface IFItem {
   name: string;
 }
 export default defineComponent({
-  components: { DistGuide },
+  components: { DistGuide, ApiGuide },
   setup() {
     const tab = ref('tab1');
     const items: Ref<IFItem[]> = ref([

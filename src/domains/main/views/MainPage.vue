@@ -13,7 +13,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { publicApis } from '@/api/index';
-import { IFBillInfo } from '../type';
+import { IFBillInfoReq } from '@/api/type';
 import {
   Chart as ChartJS,
   Title,
@@ -53,7 +53,7 @@ export default defineComponent({
   },
   methods: {
     async submitForm() {
-      const testV: Pick<IFBillInfo, 'numOfRows'> = {
+      const testV: Pick<IFBillInfoReq, 'numOfRows'> = {
         numOfRows: 2,
       };
 
