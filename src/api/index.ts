@@ -1,8 +1,4 @@
-import axios, {
-  AxiosInstance,
-  AxiosRequestConfig,
-  PublicResponse,
-} from 'axios';
+import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 import { cmn as $cmn } from '@/util/cmn';
 import { IFResult } from '@/api/type';
 
@@ -66,7 +62,7 @@ function axiosRequest(config: AxiosRequestConfig) {
 }
 
 function publicApis(url: string, qStr: string) {
-  return pubApiInst.get<any, PublicResponse<any, any>, any>(
+  return pubApiInst.get(
     `${url}?serviceKey${qStr}&serviceKey=${process.env.VUE_APP_PUBLIC_API_KEY}`,
   );
 }

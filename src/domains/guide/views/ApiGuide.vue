@@ -21,7 +21,7 @@
 import { defineComponent, ref } from 'vue';
 import { publicApis } from '@/api/index';
 import { IFBillInfoReq, IFBillInfoDetail } from '@/api/type';
-import { PublicResponse } from 'axios';
+import { AxiosResponse } from 'axios';
 
 export default defineComponent({
   setup() {
@@ -35,7 +35,7 @@ export default defineComponent({
         numOfRows: 2,
       };
 
-      const { data }: PublicResponse<IFBillInfoDetail[]> = await publicApis(
+      const { data }: AxiosResponse<IFBillInfoDetail[]> = await publicApis(
         '/9710000/BillInfoService2/getBillInfoList',
         this.$strUtil.queryString(testV),
       );
