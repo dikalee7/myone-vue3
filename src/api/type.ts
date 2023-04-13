@@ -43,7 +43,7 @@ export interface IFResponse {
 }
 
 export interface IFResult<T> {
-  status: string;
-  statusText: string;
+  resultCode: string;
+  resultMsg: string;
   data: T[];
 }
