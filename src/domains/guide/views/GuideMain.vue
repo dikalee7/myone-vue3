@@ -11,15 +11,15 @@
     </v-tabs>
 
     <v-window v-model="tab">
-      <v-window-item key="tab1" value="tab1">
+      <v-window-item value="tab1">
         <v-card color="basil" flat>
           <DistGuide />
         </v-card>
       </v-window-item>
-      <v-window-item key="tab2" value="tab2">
+      <v-window-item value="tab2">
         <v-card color="basil" flat> <ApiGuide /> </v-card>
       </v-window-item>
-      <v-window-item key="tab3" value="tab3">
+      <v-window-item value="tab3">
         <v-card color="basil" flat> 가이드 작성중 </v-card>
       </v-window-item>
     </v-window>
