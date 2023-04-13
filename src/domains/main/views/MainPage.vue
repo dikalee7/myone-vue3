@@ -12,8 +12,6 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { publicApis } from '@/api/index';
-import { IFBillInfoReq } from '@/api/type';
 import {
   Chart as ChartJS,
   Title,
@@ -53,17 +51,6 @@ export default defineComponent({
   },
   methods: {
     async submitForm() {
-      const testV: Pick<IFBillInfoReq, 'numOfRows'> = {
-        numOfRows: 2,
-      };
-
-      const response = await publicApis(
-        '/9710000/BillInfoService2/getBillInfoList',
-        this.$strUtil.queryString(testV),
-      );
-
-      this.rsltJson = JSON.stringify(response, null, 2);
-
       this.$strUtil.testStr('abced');
     },
   },

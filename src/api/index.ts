@@ -1,17 +1,22 @@
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
+import axios, {
+  AxiosInstance,
+  AxiosRequestConfig,
+  PublicResponse,
+} from 'axios';
 import { cmn as $cmn } from '@/util/cmn';
+import { IFResult } from '@/api/type';
 
 const axiosConfig: AxiosRequestConfig = {
-  baseURL: process.env.VUE_APP_API_BILLINFO_URL,
+  baseURL: process.env.VUE_APP_PUBLIC_API_URL,
 };
 
-const instance: AxiosInstance = axios.create(axiosConfig);
+const pubApiInst: AxiosInstance = axios.create(axiosConfig);
 
 //타임아웃 설정
-instance.defaults.timeout = 2500;
+pubApiInst.defaults.timeout = 5000;
 
 //요청 인터셉터 추가
-instance.interceptors.request.use(
+pubApiInst.interceptors.request.use(
   (config) => {
     //요청을 보내기 전에 수행할 로직
     $cmn.setLoading(true);
@@ -27,16 +32,24 @@ instance.interceptors.request.use(
 );
 
 //응답 인터셉터 추가
-instance.interceptors.response.use(
+pubApiInst.interceptors.response.use(
   (response): any => {
     //응답에 대한 로직 작성
     $cmn.setLoading(false);
-    const result = {
-      status: response.data.response.header.resultCode,
-      statusText: response.data.response.header.resultMsg,
+    const result: IFResult<any> = {
+      ...response.data.response.header,
       data: response.data.response.body.items.item,
     };
-    return result;
+
+    console.log('config===>', response.config);
+
+    if (result.resultCode != '00') {
+      //응답코드 '00' 성공이 아닌 경우 처리
+      alert(result.resultMsg);
+      return false;
+    } else {
+      return result;
+    }
   },
 
   (error) => {
@@ -49,12 +62,12 @@ instance.interceptors.response.use(
 );
 
 function axiosRequest(config: AxiosRequestConfig) {
-  return instance(config);
+  return pubApiInst(config);
 }
 
 function publicApis(url: string, qStr: string) {
-  return instance.get(
-    `${url}?serviceKey${qStr}&serviceKey=${process.env.VUE_APP_API_BILLINFO_KEY}`,
+  return pubApiInst.get<any, PublicResponse<any, any>, any>(
+    `${url}?serviceKey${qStr}&serviceKey=${process.env.VUE_APP_PUBLIC_API_KEY}`,
   );
 }
 
