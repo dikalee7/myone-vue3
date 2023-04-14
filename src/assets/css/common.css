@@ -3,7 +3,7 @@
     overflow: auto;
 }
 
-.text-sm-left {
+.text-small-left {
     font-size: small;
     text-align: left;
 }
@@ -12,3 +12,4 @@
     color: blue;
     cursor: pointer;
 }
+

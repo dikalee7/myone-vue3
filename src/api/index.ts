@@ -1,6 +1,7 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 import { cmn as $cmn } from '@/util/cmn';
 import { IFResult } from '@/api/type';
+import queryString from 'query-string';
 
 const axiosConfig: AxiosRequestConfig = {
   baseURL: process.env.VUE_APP_PUBLIC_API_URL,
@@ -61,10 +62,12 @@ function axiosRequest(config: AxiosRequestConfig) {
   return pubApiInst(config);
 }
 
-function publicApis(url: string, qStr: string) {
+function publicApiCall(url: string, param: object) {
   return pubApiInst.get(
-    `${url}?serviceKey${qStr}&serviceKey=${process.env.VUE_APP_PUBLIC_API_KEY}`,
+    `${url}?${queryString.stringify(param)}&serviceKey=${
+      process.env.VUE_APP_PUBLIC_API_KEY
+    }`,
   );
 }
 
-export { axiosRequest, publicApis };
+export { axiosRequest, publicApiCall };
