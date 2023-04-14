@@ -34,7 +34,7 @@ interface IFItem {
 export default defineComponent({
   components: { DistGuide, ApiGuide },
   setup() {
-    const tab = ref('tab1');
+    const tab = ref('tab2');
     const items: Ref<IFItem[]> = ref([
       { id: 'tab1', name: '배포' },
       { id: 'tab2', name: 'Api' },
@@ -50,7 +50,6 @@ export default defineComponent({
 </script>
 
 <style scoped>
-/* Helper classes */
 .bg-basil {
   background-color: #fffbe6 !important;
 }

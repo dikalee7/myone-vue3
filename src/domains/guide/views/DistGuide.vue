@@ -11,7 +11,7 @@
           <v-expansion-panel-title class="ma-0">
             AWS EC2 인스턴스 생성
           </v-expansion-panel-title>
-          <v-expansion-panel-text class="text-sm-left">
+          <v-expansion-panel-text class="text-small-left">
             <v-card>
               <v-card-item>
                 프리티어가 적용되는 Linux t2.micro 유형으로 생성
@@ -25,7 +25,14 @@
             </v-card>
             <v-card :class="dvCls">
               <v-card-item>
-                <span :class="infoCls">참고</span><br />
+                <v-chip color="teal-darken-3" class="ma-0" label>
+                  <v-icon
+                    start
+                    icon="mdi-arrow-down-drop-circle-outline"
+                  ></v-icon>
+                  참고
+                </v-chip>
+                <br />
                 인스턴스 재기동 시 IP 변경되는 것 확인되어 고정IP 부여를 위해
                 탄력적IP 할당하여 인스턴스에 연결함
               </v-card-item>
@@ -37,7 +44,7 @@
           <v-expansion-panel-title class="ma-0">
             EC2 인스턴스에 JAVA 설치
           </v-expansion-panel-title>
-          <v-expansion-panel-text class="text-sm-left">
+          <v-expansion-panel-text class="text-small-left">
             <v-card>
               <v-card-item> Jenkins 설치를 위해 JAVA 설치(11버전) </v-card-item>
               <v-card-item>
@@ -51,7 +58,14 @@
             </v-card>
             <v-card :class="dvCls">
               <v-card-item>
-                <span :class="infoCls">참고</span><br />
+                <v-chip color="teal-darken-3" class="ma-0" label>
+                  <v-icon
+                    start
+                    icon="mdi-arrow-down-drop-circle-outline"
+                  ></v-icon>
+                  참고
+                </v-chip>
+                <br />
                 java8 설치하여 진행하였으나 젠킨스 설치 후 실행 오류 발생
               </v-card-item>
             </v-card>
@@ -62,10 +76,16 @@
           <v-expansion-panel-title class="ma-0">
             EC2 인스턴스에 Jenkins 설치
           </v-expansion-panel-title>
-          <v-expansion-panel-text class="text-sm-left">
+          <v-expansion-panel-text class="text-small-left">
             <v-card>
               <v-card-item>
-                <span :class="accCls"> rpm 패키지 다운로드 및 설치 </span>
+                <v-chip color="teal-darken-3" class="ma-0" label>
+                  <v-icon
+                    start
+                    icon="mdi-arrow-down-drop-circle-outline"
+                  ></v-icon>
+                  rpm 패키지 다운로드 및 설치
+                </v-chip>
                 <v-card-text :class="cmdCls">
                   <pre>
 sudo wget -O /etc/yum.repos.d/jenkins.repo \
@@ -87,7 +107,7 @@ sudo systemctl daemon-reload
           <v-expansion-panel-title class="ma-0">
             EC2 인스턴스에 Git 설치
           </v-expansion-panel-title>
-          <v-expansion-panel-text class="text-sm-left">
+          <v-expansion-panel-text class="text-small-left">
             <v-card>
               <v-card-item>
                 #Perform a quick update on your instance<br />
@@ -109,7 +129,7 @@ sudo systemctl daemon-reload
           <v-expansion-panel-title class="ma-0">
             Github webhook 설정
           </v-expansion-panel-title>
-          <v-expansion-panel-text class="text-sm-left">
+          <v-expansion-panel-text class="text-small-left">
             <v-card>
               <v-card-item>
                 배포할 GitHub Repository <br />
@@ -122,7 +142,14 @@ sudo systemctl daemon-reload
             </v-card>
             <v-card :class="dvCls">
               <v-card-item>
-                <span :class="infoCls">참고</span><br />
+                <v-chip color="teal-darken-3" class="ma-0" label>
+                  <v-icon
+                    start
+                    icon="mdi-arrow-down-drop-circle-outline"
+                  ></v-icon>
+                  참고
+                </v-chip>
+                <br />
                 Jenkins에서 Github 연결시 Personal access token 필요
               </v-card-item>
             </v-card>
@@ -133,7 +160,7 @@ sudo systemctl daemon-reload
           <v-expansion-panel-title class="ma-0">
             Github Personal access tokens
           </v-expansion-panel-title>
-          <v-expansion-panel-text class="text-sm-left">
+          <v-expansion-panel-text class="text-small-left">
             <v-card>
               <v-card-item>
                 GitHub > 개인 프로필 > Settings > Developer settings<br />
@@ -148,7 +175,7 @@ sudo systemctl daemon-reload
           <v-expansion-panel-title class="ma-0">
             Jenkins Github 연결 및 item 생성
           </v-expansion-panel-title>
-          <v-expansion-panel-text class="text-sm-left">
+          <v-expansion-panel-text class="text-small-left">
             <v-card>
               <v-card-item>
                 배포할 VueJS 젠킨스 빌드를 위하여 NodeJS 관련 설정<br />
@@ -173,7 +200,13 @@ sudo systemctl daemon-reload
                 - Build Steps(Excute shell) <br />
               </v-card-item>
               <v-card-item>
-                <span :class="accCls"> Excute shell에 아래 내용 입력 </span>
+                <v-chip color="teal-darken-3" class="ma-0" label>
+                  <v-icon
+                    start
+                    icon="mdi-arrow-down-drop-circle-outline"
+                  ></v-icon>
+                  Excute shell에 아래 내용 입력
+                </v-chip>
                 <v-card-text :class="cmdCls">
                   cd /var/lib/jenkins/workspace/{생성한 Jenkins Item 이름}<br />
                   npm install<br />
@@ -183,7 +216,14 @@ sudo systemctl daemon-reload
             </v-card>
             <v-card :class="dvCls">
               <v-card-item>
-                <span :class="infoCls">참고</span><br />
+                <v-chip color="teal-darken-3" class="ma-0" label>
+                  <v-icon
+                    start
+                    icon="mdi-arrow-down-drop-circle-outline"
+                  ></v-icon>
+                  참고
+                </v-chip>
+                <br />
                 - t2.micro 인스턴스 유형 메모리 1GB<br />
                 - 젠킨스 배포 수행결과 EC2 멈춤 현상 발생하여 Swap 메모리
                 설정하여 메모리 부족 현상 해결
@@ -195,7 +235,7 @@ sudo systemctl daemon-reload
           <v-expansion-panel-title class="ma-0">
             스왑 파일을 이용한 스왑 공간 할당
           </v-expansion-panel-title>
-          <v-expansion-panel-text class="text-sm-left">
+          <v-expansion-panel-text class="text-small-left">
             <v-card>
               <v-card-item>
                 # swapfile 메모리를 할당<br />
@@ -235,7 +275,7 @@ sudo systemctl daemon-reload
           <v-expansion-panel-title class="ma-0">
             EC2 인스턴스에 AMI Nginx 설치
           </v-expansion-panel-title>
-          <v-expansion-panel-text class="text-sm-left">
+          <v-expansion-panel-text class="text-small-left">
             <v-card>
               <v-card-item>
                 #설치<br />
@@ -319,8 +359,6 @@ export default defineComponent({
   data() {
     return {
       panel: [0], //0, 1, 2, 3, 4, 5, 6, 7, 8
-      infoCls: 'text-sm-left pa-1 bg-green-darken-2',
-      accCls: 'text-body-2 pa-1 bg-orange-accent-4',
       dvCls: 'mt-5 mb-3',
       cmdCls: 'bg-grey-darken-4 mt-1 vSpace',
       extLinkInfo: [
@@ -365,7 +403,4 @@ export default defineComponent({
   },
 });
 </script>
-
-<style scoped>
-@import '/src/assets/css/guide.css';
-</style>
+<style scoped></style>

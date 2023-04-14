@@ -20,3 +20,8 @@ export default defineComponent({
   name: 'App',
 });
 </script>
+
+<style>
+@import '/src/assets/css/common.css';
+@import '/src/assets/css/vcustom.css';
+</style>

@@ -16,6 +16,16 @@ export default [
       ),
     meta: { isLoading: true, continueLoading: false },
   },
+
+  {
+    path: '/apiGuide',
+    component: () =>
+      import(
+        /* webpackChunkName: "guide" */ '@/domains/guide/views/ApiGuide.vue'
+      ),
+    meta: { isLoading: true, continueLoading: false },
+  },
+
   {
     path: '/glink',
     name: 'glink',

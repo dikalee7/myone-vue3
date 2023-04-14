@@ -1,0 +1,11 @@
+.v-chip.v-chip--size-default {
+    font-size: x-small !important;
+}
+
+.v-table {
+    --v-table-header-height: 36px!important;
+}
+
+.v-table>.v-table__wrapper>table>tbody>tr>td {
+    padding: 5px 10px !important;
+}
