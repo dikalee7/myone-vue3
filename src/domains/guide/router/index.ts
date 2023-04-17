@@ -5,7 +5,11 @@ export default [
       import(
         /* webpackChunkName: "guide" */ '@/domains/guide/views/GuideMain.vue'
       ),
-    meta: { isLoading: true, continueLoading: false },
+    meta: {
+      isLoading: true,
+      continueLoading: false,
+      title: '개발 가이드',
+    },
   },
 
   {
@@ -14,7 +18,7 @@ export default [
       import(
         /* webpackChunkName: "guide" */ '@/domains/guide/views/DistGuide.vue'
       ),
-    meta: { isLoading: true, continueLoading: false },
+    meta: { isLoading: true, continueLoading: false, title: '배포' },
   },
 
   {
@@ -23,7 +27,7 @@ export default [
       import(
         /* webpackChunkName: "guide" */ '@/domains/guide/views/ApiGuide.vue'
       ),
-    meta: { isLoading: true, continueLoading: false },
+    meta: { isLoading: true, continueLoading: false, title: 'API' },
   },
 
   {

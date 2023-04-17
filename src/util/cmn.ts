@@ -1,23 +1,31 @@
 import store from '@/store';
+import lds, { LoDashStatic } from 'lodash';
+import { IFHeader } from '@/store/modules/headerInfo';
 
 interface IFCmn {
   /** Description : Page Loading */
   setLoading: (f: boolean) => void;
-  cmnTest: () => void;
-  cmnTest2: () => void;
+  setHeader: (f: IFHeader) => void;
+}
+
+interface IFUtils {
+  cmn: IFCmn;
+  lds: LoDashStatic;
 }
 
 const cmn: IFCmn = {
   setLoading: (f: boolean) => {
-    store.dispatch('LoadingModule/setPageLoading', f);
-    // store.commit('LoadingModule/setPageLoading', f);
+    store.commit('LoadingModule/setPageLoading', f);
   },
-  cmnTest: () => {
-    console.log('cmnTest');
-  },
-  cmnTest2: () => {
-    console.log('cmnTest2');
+  setHeader: (o: IFHeader) => {
+    console.log(o);
+    store.commit('HeaderModule/setHeaderInfo', lds.omitBy(o, lds.isUndefined));
   },
 };
 
-export { cmn, IFCmn };
+const utils: IFUtils = {
+  cmn,
+  lds,
+};
+
+export { utils, IFUtils };

@@ -10,7 +10,7 @@
     <!-- <template v-slot:append>
       <v-app-bar-nav-icon></v-app-bar-nav-icon>
     </template> -->
-    <v-icon class="ml-5" v-if="!hInfo.isBack">mdi-one-up</v-icon>
+    <v-icon class="ml-5" v-if="!hInfo.isBack">mdi-wallet</v-icon>
 
     <v-btn icon v-if="hInfo.isBack" @click="goBack">
       <v-icon>mdi-arrow-left-circle</v-icon>
@@ -34,32 +34,21 @@
 <script lang="ts">
 import { computed, defineComponent } from 'vue';
 import { useStore } from 'vuex';
-import { IFHeader } from '@/store/modules/headerInfo';
 
 export default defineComponent({
   setup() {
     const store = useStore();
-    // const hInfo: IFHeader = store.getters['HeaderModule/getHeaderInfo'];
-    const { value } = computed(
-      () => store.getters['HeaderModule/getHeaderInfo'] as IFHeader,
-    );
-    // const isHome = computed(() => hInfo.isHome);
-    // const isBack = computed(() => hInfo.isBack);
 
     return {
-      hInfo: value,
+      hInfo: computed(() => store.getters['HeaderModule/getHeaderInfo']),
     };
   },
   methods: {
     goBack() {
-      if (window.history.state.back === null) {
-        this.goHome();
-      } else {
-        this.$router.back();
-      }
+      this.$router.go(-1);
     },
     goHome() {
-      this.$router.push('/');
+      this.$router.replace('main');
     },
   },
 });

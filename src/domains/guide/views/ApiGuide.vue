@@ -48,7 +48,12 @@ async callBillInfo() {
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import {
+  defineComponent,
+  ref,
+  getCurrentInstance,
+  ComponentInternalInstance,
+} from 'vue';
 import { publicApiCall } from '@/api/index';
 import { IFBillInfoDetail } from '@/api/type';
 import { AxiosResponse } from 'axios';
@@ -57,6 +62,11 @@ import TableView, { TB_THEME, IFTbData } from '@/components/TableView.vue';
 export default defineComponent({
   components: { TableView },
   setup() {
+    const $utils = (getCurrentInstance() as ComponentInternalInstance)
+      .appContext.config.globalProperties.$utils;
+
+    console.log($utils.lds.add(1, 2));
+
     const reveal = ref(false);
     const rsltJson = ref('');
     const cmdCls = ref('bg-grey-darken-4 mt-1 vSpace vJson');
