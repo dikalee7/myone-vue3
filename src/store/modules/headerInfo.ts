@@ -6,10 +6,10 @@ import { RootState } from '../index';
  * @param isShow  Screen exposure reference value of the header area
  */
 export interface IFHeader {
-  title: string;
-  isShow: boolean;
-  isHome: boolean;
-  isBack: boolean;
+  title?: string;
+  isShow?: boolean;
+  isHome?: boolean;
+  isBack?: boolean;
 }
 
 export interface IFHeaderModule {
@@ -26,17 +26,22 @@ export const HeaderModule: Module<IFHeaderModule, RootState> = {
       isBack: true,
     },
   }),
+  getters: {
+    getHeaderInfo(state) {
+      return state.headerInfo;
+    },
+  },
   mutations: {
-    setHeaderInfo(state, headerInfo: Partial<IFHeader>) {
+    setHeaderInfo(state, headerInfo: IFHeader) {
       state.headerInfo = {
         ...state.headerInfo,
         ...headerInfo,
       };
     },
   },
-  getters: {
-    getHeaderInfo(state) {
-      return state.headerInfo;
-    },
-  },
+  // actions: {
+  //   setHeaderInfo: function (context, payload: Partial<IFHeader>) {
+  //     return context.commit('setHeaderInfo', payload);
+  //   },
+  // },
 };

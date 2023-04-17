@@ -17,9 +17,10 @@ import { useStore } from 'vuex';
 export default defineComponent({
   setup() {
     const store = useStore();
-    const overlay = computed(() => store.getters['LoadingModule/isLoading']);
 
-    return { overlay };
+    return {
+      overlay: computed(() => store.getters['LoadingModule/isLoading']),
+    };
   },
 });
 </script>

@@ -1,5 +1,5 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
-import { cmn as $cmn } from '@/util/cmn';
+import { utils as $Utils } from '@/util/cmn';
 import { IFResult } from '@/api/type';
 import queryString from 'query-string';
 
@@ -16,14 +16,14 @@ pubApiInst.defaults.timeout = 5000;
 pubApiInst.interceptors.request.use(
   (config) => {
     //요청을 보내기 전에 수행할 로직
-    $cmn.setLoading(true);
+    $Utils.cmn.setLoading(true);
     return config;
   },
   (error) => {
     //요청 에러가 발생했을 때 수행할 로직
     console.log('************ AXIOS REQUEST ERROR ************');
     console.log(JSON.stringify(error, null, 2));
-    $cmn.setLoading(false);
+    $Utils.cmn.setLoading(false);
     return Promise.reject(error);
   },
 );
@@ -32,7 +32,7 @@ pubApiInst.interceptors.request.use(
 pubApiInst.interceptors.response.use(
   (response): any => {
     //응답에 대한 로직 작성
-    $cmn.setLoading(false);
+    $Utils.cmn.setLoading(false);
     const result: IFResult<any> = {
       ...response.data.response.header,
       data: response.data.response.body.items.item,
@@ -53,7 +53,7 @@ pubApiInst.interceptors.response.use(
     //응답 에러가 발생했을 때 수행할 로직
     console.log('************ AXIOS RESPONSE ERROR ************');
     console.log(JSON.stringify(error, null, 2));
-    $cmn.setLoading(false);
+    $Utils.cmn.setLoading(false);
     return Promise.reject(error);
   },
 );

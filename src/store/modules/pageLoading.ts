@@ -10,19 +10,19 @@ export const LoadingModule: Module<IFLoadingModule, RootState> = {
   state: () => ({
     pageLoading: false,
   }),
-  mutations: {
-    setPageLoading(state, pageLoading: boolean) {
-      state.pageLoading = pageLoading;
-    },
-  },
   getters: {
     isLoading(state) {
       return state.pageLoading;
     },
   },
-  actions: {
-    setPageLoading: function (context, payload) {
-      return context.commit('setPageLoading', payload);
+  mutations: {
+    setPageLoading(state, pageLoading: boolean) {
+      state.pageLoading = pageLoading;
     },
   },
+  // actions: {
+  //   setPageLoading: function (context, payload) {
+  //     return context.commit('setPageLoading', payload);
+  //   },
+  // },
 };

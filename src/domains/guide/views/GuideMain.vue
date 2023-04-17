@@ -23,19 +23,15 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, Ref, ref } from 'vue';
+import { defineComponent, ref } from 'vue';
 import ApiGuide from './ApiGuide.vue';
 import DistGuide from './DistGuide.vue';
 
-interface IFItem {
-  id: string;
-  name: string;
-}
 export default defineComponent({
   components: { DistGuide, ApiGuide },
   setup() {
-    const tab = ref('tab2');
-    const items: Ref<IFItem[]> = ref([
+    const tab = ref('tab1');
+    const items = ref([
       { id: 'tab1', name: '배포' },
       { id: 'tab2', name: 'Api' },
       { id: 'tab3', name: '공통유틸' },
@@ -44,6 +40,7 @@ export default defineComponent({
     const text = ref(
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
     );
+
     return { tab, items, text };
   },
 });

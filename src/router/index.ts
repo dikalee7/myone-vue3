@@ -2,14 +2,15 @@ import { createWebHistory, createRouter } from 'vue-router';
 import GuideRouter from '@/domains/guide/router/index';
 import MainRouter from '@/domains/main/router/index';
 import TrafficRouter from '@/domains/traffic/router/index';
-import { cmn as $cmn } from '@/util/cmn';
+import { utils as $Utils } from '@/util/cmn';
+import { IFHeader } from '@/store/modules/headerInfo';
 
 const rt = createRouter({
   history: createWebHistory(),
   routes: [
     {
       path: '/',
-      redirect: '/guide',
+      redirect: '/main',
     },
     {
       path: '/notFound',
@@ -36,13 +37,22 @@ const rt = createRouter({
 });
 
 rt.beforeEach((to, from, next) => {
-  console.log(to);
-  if (to.meta.isLoading) $cmn.setLoading(true);
+  console.log('to===>', to);
+  console.log('from===>', from);
+  if (to.meta.isLoading) $Utils.cmn.setLoading(true);
   next();
 });
 
 rt.afterEach((to) => {
-  $cmn.setLoading(to.meta.continueLoading as boolean);
+  const headerInfo: IFHeader = {
+    title: to.meta.title as string,
+    isShow: !to.meta.hideHeader as boolean,
+    isBack: !to.meta.hideBack as boolean,
+    isHome: !to.meta.hideHome as boolean,
+  };
+
+  $Utils.cmn.setHeader(headerInfo);
+  $Utils.cmn.setLoading(to.meta.continueLoading as boolean);
 });
 
 export default rt;

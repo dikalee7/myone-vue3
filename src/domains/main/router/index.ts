@@ -5,6 +5,12 @@ export default [
       import(
         /* webpackChunkName: "main" */ '@/domains/main/views/MainPage.vue'
       ),
-    meta: { isLoading: true, continueLoading: false },
+    meta: {
+      isLoading: true,
+      continueLoading: false,
+      title: 'MY ONE',
+      hideBack: true,
+      hideHome: true,
+    },
   },
 ];

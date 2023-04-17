@@ -1,11 +1,10 @@
 import store from '@/store';
-import { IFStrUtil } from '@/util/stringUtils';
-import { IFCmn } from '@/util/cmn';
+import { IFUtils } from '@/util/cmn';
+import { LoDashStatic } from 'lodash';
 
 declare module '@vue/runtime-core' {
   interface ComponentCustomProperties {
-    $cmn: IFCmn;
-    $strUtil: IFStrUtil;
+    $utils: IFUtils;
     $store: store;
   }
 }
