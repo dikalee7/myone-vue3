@@ -1,13 +1,12 @@
 <template>
-  <v-card class="mx-auto" color="grey-lighten-3">
-    <v-layout>
-      <MyoneHeader />
-      <v-main>
-        <router-view />
-        <LoadingOverlay />
-      </v-main>
-    </v-layout>
-  </v-card>
+  <v-layout>
+    <MyoneHeader />
+    <v-main>
+      <router-view />
+      <!-- <MyoneFooter /> -->
+      <LoadingOverlay />
+    </v-main>
+  </v-layout>
 </template>
 
 <script lang="ts">

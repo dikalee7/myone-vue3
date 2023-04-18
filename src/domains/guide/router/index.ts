@@ -1,6 +1,7 @@
 export default [
   {
     path: '/guide',
+    name: 'guide',
     component: () =>
       import(
         /* webpackChunkName: "guide" */ '@/domains/guide/views/GuideMain.vue'
@@ -14,6 +15,7 @@ export default [
 
   {
     path: '/distGuide',
+    name: 'distGuide',
     component: () =>
       import(
         /* webpackChunkName: "guide" */ '@/domains/guide/views/DistGuide.vue'
@@ -23,6 +25,7 @@ export default [
 
   {
     path: '/apiGuide',
+    name: 'apiGuide',
     component: () =>
       import(
         /* webpackChunkName: "guide" */ '@/domains/guide/views/ApiGuide.vue'
