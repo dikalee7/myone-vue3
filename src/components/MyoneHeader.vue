@@ -1,5 +1,9 @@
 <template>
-  <v-app-bar color="teal-darken-4" v-if="hInfo.isShow">
+  <v-app-bar
+    color="teal-darken-4"
+    v-if="hInfo.isShow"
+    :image="require('/src/assets/image/main/back-header.jpg')"
+  >
     <!-- image="https://picsum.photos/1920/1080?random" -->
     <template v-slot:image>
       <v-img
