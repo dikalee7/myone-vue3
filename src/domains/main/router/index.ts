@@ -1,6 +1,7 @@
 export default [
   {
     path: '/main',
+    name: 'main',
     component: () =>
       import(
         /* webpackChunkName: "main" */ '@/domains/main/views/MainPage.vue'

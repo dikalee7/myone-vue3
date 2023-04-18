@@ -1,112 +1,18 @@
 <template>
-  <v-card class="mx-auto">
-    <v-container>
+  <v-card class="mx-auto h-screen">
+    <v-container fluid>
       <v-row dense>
         <v-col cols="12">
-          <v-card
-            theme="dark"
-            :image="require('/src/assets/image/main/back-dev.jpg')"
-          >
-            <template v-slot:image>
-              <v-img
-                gradient="to top right, rgba(3, 5, 33,.8), rgba(100, 108, 227,.8)"
-              >
-              </v-img>
-            </template>
-            <div class="d-flex flex-no-wrap justify-space-between">
-              <div>
-                <v-card-title class="text-h6"> 개발환경구축 </v-card-title>
-
-                <v-card-subtitle> VUE3+TYPESCRIPT </v-card-subtitle>
-
-                <v-card-text> 개발 환경 및 공통작업 진행하며 정리 </v-card-text>
-
-                <v-card-actions>
-                  <v-btn
-                    class="ms-2"
-                    variant="outlined"
-                    size="small"
-                    @click="goGuide('guide')"
-                  >
-                    가이드
-                  </v-btn>
-                  <v-btn
-                    class="ms-2"
-                    variant="outlined"
-                    size="small"
-                    @click="goGuide('distGuide')"
-                  >
-                    배포
-                  </v-btn>
-                  <v-btn
-                    class="ms-2"
-                    variant="outlined"
-                    size="small"
-                    @click="goGuide('apiGuide')"
-                  >
-                    API
-                  </v-btn>
-                </v-card-actions>
-              </div>
-            </div>
-          </v-card>
+          <MainContent :ctInfo="guideCtInfo" @goPage="fnGoPage" />
         </v-col>
         <v-col cols="12">
-          <v-card
-            theme="dark"
-            :image="require('/src/assets/image/main/back-travel.jpg')"
-          >
-            <template v-slot:image>
-              <v-img
-                gradient="to top right, rgba(19,84,122,.8), rgba(128,208,199,.8)"
-              >
-              </v-img>
-            </template>
-            <div class="d-flex flex-no-wrap justify-space-between">
-              <div>
-                <v-card-title class="text-h6"> 컨텐츠1 </v-card-title>
-
-                <v-card-subtitle> 제공 예정 </v-card-subtitle>
-
-                <v-card-text> 컨텐츠 구상중 </v-card-text>
-
-                <v-card-actions>
-                  <v-btn class="ms-2" variant="outlined" size="small">
-                    이동
-                  </v-btn>
-                </v-card-actions>
-              </div>
-            </div>
-          </v-card>
+          <MainContent :ctInfo="contCtInfo1" @goPage="fnGoPage" />
         </v-col>
         <v-col cols="12">
-          <v-card
-            color="#FFAB40"
-            theme="dark"
-            :image="require('/src/assets/image/main/back-traffic.jpg')"
-          >
-            <template v-slot:image>
-              <v-img
-                gradient="to top right, rgba(125, 46, 9,.8), rgba(250, 115, 52,.8)"
-              >
-              </v-img>
-            </template>
-            <div class="d-flex flex-no-wrap justify-space-between">
-              <div>
-                <v-card-title class="text-h6"> 컨텐츠2 </v-card-title>
-
-                <v-card-subtitle> 제공 예정 </v-card-subtitle>
-
-                <v-card-text> 컨텐츠 구상중 </v-card-text>
-
-                <v-card-actions>
-                  <v-btn class="ms-2" variant="outlined" size="small">
-                    이동
-                  </v-btn>
-                </v-card-actions>
-              </div>
-            </div>
-          </v-card>
+          <MainContent :ctInfo="contCtInfo2" @goPage="fnGoPage" />
+        </v-col>
+        <v-col cols="12">
+          <MainContent :ctInfo="contCtInfo3" @goPage="fnGoPage" />
         </v-col>
       </v-row>
     </v-container>
@@ -115,14 +21,94 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import MainContent, {
+  IFActions,
+  IFCtInfo,
+} from '../components/MainContent.vue';
 
 export default defineComponent({
+  components: { MainContent },
   setup() {
-    return {};
+    // -- 가이드 컨텐츠 정의 Start --
+    const guideActData: IFActions[] = [
+      {
+        name: '가이드',
+        emnm: 'goPage',
+        empr: { name: 'guide', params: {} },
+      },
+      {
+        name: '배포',
+        emnm: 'goPage',
+        empr: { name: 'distGuide', params: {} },
+      },
+      {
+        name: 'API',
+        emnm: 'goPage',
+        empr: { name: 'apiGuide', params: {} },
+      },
+    ];
+
+    const guideCtInfo: IFCtInfo = {
+      title: '개발환경구축',
+      subtitle: 'VUE3+TYPESCRIPT',
+      text: '개발 환경 및 공통작업 진행하며 정리',
+      actions: guideActData,
+      image: 'back-dev.jpg',
+      gradient: 'to top right, rgba(3, 5, 33,.8), rgba(100, 108, 227,.8)',
+    };
+    // -- 가이드 컨텐츠 정의 End --
+
+    const contCtInfo1: IFCtInfo = {
+      title: '',
+      subtitle: '개발 예정',
+      text: '컨텐츠 구상 중',
+      image: 'back-travel.jpg',
+      gradient: 'to top right, rgba(19,84,122,.8), rgba(128,208,199,.8)',
+      actions: [
+        {
+          name: '이동',
+          emnm: 'goPage',
+          empr: { name: 'main', params: {} },
+        },
+      ],
+    };
+
+    const contCtInfo2: IFCtInfo = {
+      title: '',
+      subtitle: '개발 예정',
+      text: '컨텐츠 구상 중',
+      image: 'back-traffic.jpg',
+      gradient: 'to top right, rgba(125, 46, 9,.8), rgba(250, 115, 52,.8)',
+      actions: [
+        {
+          name: '이동',
+          emnm: 'goPage',
+          empr: { name: 'main', params: {} },
+        },
+      ],
+    };
+
+    const contCtInfo3: IFCtInfo = {
+      title: '',
+      subtitle: '개발 예정',
+      text: '컨텐츠 구상 중',
+      image: 'back-bill.jpg',
+      gradient: 'to top right, rgba(51, 61, 64,.8), rgba(182, 199, 204,.8)',
+      actions: [
+        {
+          name: '이동',
+          emnm: 'goPage',
+          empr: { name: 'main', params: {} },
+        },
+      ],
+    };
+
+    return { guideCtInfo, contCtInfo1, contCtInfo2, contCtInfo3 };
   },
   methods: {
-    goGuide(path: string) {
-      this.$router.push(path);
+    fnGoPage(p: any) {
+      console.log('fnGoPage', p);
+      this.$router.push({ name: p.name, params: p.params });
     },
   },
 });
