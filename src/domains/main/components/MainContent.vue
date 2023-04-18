@@ -33,21 +33,7 @@
 <script lang="ts">
 import { defineComponent, computed } from 'vue';
 import sanitizeHtml from 'sanitize-html';
-
-export interface IFActions {
-  name: string;
-  emnm: string;
-  empr: object;
-}
-
-export interface IFCtInfo {
-  title: string;
-  subtitle: string;
-  text: string;
-  image?: string;
-  gradient?: string;
-  actions?: IFActions[];
-}
+import { IFCtInfo } from '@/domains/main/composables/typs';
 
 export default defineComponent({
   emits: ['goPage'],
