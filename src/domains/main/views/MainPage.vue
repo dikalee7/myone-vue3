@@ -3,7 +3,16 @@
     <v-container>
       <v-row dense>
         <v-col cols="12">
-          <v-card color="#385F73" theme="dark">
+          <v-card
+            theme="dark"
+            :image="require('/src/assets/image/main/back-dev.jpg')"
+          >
+            <template v-slot:image>
+              <v-img
+                gradient="to top right, rgba(3, 5, 33,.8), rgba(100, 108, 227,.8)"
+              >
+              </v-img>
+            </template>
             <div class="d-flex flex-no-wrap justify-space-between">
               <div>
                 <v-card-title class="text-h6"> 개발환경구축 </v-card-title>
@@ -49,7 +58,16 @@
           </v-card>
         </v-col>
         <v-col cols="12">
-          <v-card color="#00796B" theme="dark">
+          <v-card
+            theme="dark"
+            :image="require('/src/assets/image/main/back-travel.jpg')"
+          >
+            <template v-slot:image>
+              <v-img
+                gradient="to top right, rgba(19,84,122,.8), rgba(128,208,199,.8)"
+              >
+              </v-img>
+            </template>
             <div class="d-flex flex-no-wrap justify-space-between">
               <div>
                 <v-card-title class="text-h6"> 컨텐츠1 </v-card-title>
@@ -74,7 +92,17 @@
           </v-card>
         </v-col>
         <v-col cols="12">
-          <v-card color="#FFAB40" theme="dark">
+          <v-card
+            color="#FFAB40"
+            theme="dark"
+            :image="require('/src/assets/image/main/back-traffic.jpg')"
+          >
+            <template v-slot:image>
+              <v-img
+                gradient="to top right, rgba(125, 46, 9,.8), rgba(250, 115, 52,.8)"
+              >
+              </v-img>
+            </template>
             <div class="d-flex flex-no-wrap justify-space-between">
               <div>
                 <v-card-title class="text-h6"> 컨텐츠2 </v-card-title>
