@@ -1,5 +1,5 @@
 <template>
-  <v-card class="mx-auto h-screen">
+  <v-card class="mx-auto">
     <v-container fluid>
       <v-row dense>
         <v-col cols="12">
@@ -108,7 +108,15 @@ export default defineComponent({
   methods: {
     fnGoPage(p: any) {
       console.log('fnGoPage', p);
-      this.$router.push({ name: p.name, params: p.params });
+      if (p.name == 'main') {
+        this.$swal({
+          title: '준비중',
+          html: '아직 제공되지 않습니다.',
+          showCloseButton: true,
+        });
+      } else {
+        this.$router.push({ name: p.name, params: p.params });
+      }
     },
   },
 });

@@ -5,8 +5,10 @@ import store from './store';
 import vuetify from './plugins/vuetify';
 import { loadFonts } from './plugins/webfontloader';
 import { utils } from '@/util/cmn';
+import VueSweetalert2 from 'vue-sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
 
 loadFonts();
 const app = createApp(App);
 app.config.globalProperties.$utils = utils;
-app.use(router).use(store).use(vuetify).mount('#app');
+app.use(router).use(store).use(vuetify).use(VueSweetalert2).mount('#app');
