@@ -48,12 +48,6 @@
                   </v-btn>
                 </v-card-actions>
               </div>
-
-              <!-- <v-avatar class="ma-3" size="125" rounded="0">
-                <v-img
-                  src="https://cdn.vuetifyjs.com/images/cards/foster.jpg"
-                ></v-img>
-              </v-avatar> -->
             </div>
           </v-card>
         </v-col>
@@ -82,12 +76,6 @@
                   </v-btn>
                 </v-card-actions>
               </div>
-
-              <!-- <v-avatar class="ma-3" size="125" rounded="0">
-                <v-img
-                  src="https://cdn.vuetifyjs.com/images/cards/foster.jpg"
-                ></v-img>
-              </v-avatar> -->
             </div>
           </v-card>
         </v-col>
@@ -117,12 +105,6 @@
                   </v-btn>
                 </v-card-actions>
               </div>
-
-              <!-- <v-avatar class="ma-3" size="125" rounded="0">
-                <v-img
-                  src="https://cdn.vuetifyjs.com/images/cards/foster.jpg"
-                ></v-img>
-              </v-avatar> -->
             </div>
           </v-card>
         </v-col>
