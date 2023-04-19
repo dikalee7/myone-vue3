@@ -25,6 +25,11 @@ export default function () {
         emnm: 'goPage',
         empr: { name: 'apiGuide', params: {} },
       },
+      {
+        name: 'UTIL',
+        emnm: 'goPage',
+        empr: { name: 'utilGuide', params: {} },
+      },
     ],
   });
   // -- 가이드 컨텐츠 정의 End --

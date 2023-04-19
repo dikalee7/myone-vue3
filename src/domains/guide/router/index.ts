@@ -34,6 +34,16 @@ export default [
   },
 
   {
+    path: '/utilGuide',
+    name: 'utilGuide',
+    component: () =>
+      import(
+        /* webpackChunkName: "guide" */ '@/domains/guide/views/UtilGuide.vue'
+      ),
+    meta: { isLoading: true, continueLoading: false, title: '공통 유틸' },
+  },
+
+  {
     path: '/glink',
     name: 'glink',
     component: () =>
