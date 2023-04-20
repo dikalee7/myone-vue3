@@ -18,7 +18,6 @@ const cmn: IFCmn = {
     store.commit('LoadingModule/setPageLoading', f);
   },
   setHeader: (o: IFHeader) => {
-    console.log(o);
     store.commit('HeaderModule/setHeaderInfo', lds.omitBy(o, lds.isUndefined));
   },
 };

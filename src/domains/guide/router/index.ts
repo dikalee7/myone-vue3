@@ -34,11 +34,11 @@ export default [
   },
 
   {
-    path: '/utilGuide',
-    name: 'utilGuide',
+    path: '/myoneGuide',
+    name: 'myoneGuide',
     component: () =>
       import(
-        /* webpackChunkName: "guide" */ '@/domains/guide/views/UtilGuide.vue'
+        /* webpackChunkName: "guide" */ '@/domains/guide/views/MyoneGuide.vue'
       ),
     meta: { isLoading: true, continueLoading: false, title: '공통 유틸' },
   },
