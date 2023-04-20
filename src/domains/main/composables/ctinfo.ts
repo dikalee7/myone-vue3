@@ -26,9 +26,9 @@ export default function () {
         empr: { name: 'apiGuide', params: {} },
       },
       {
-        name: 'UTIL',
+        name: '공통',
         emnm: 'goPage',
-        empr: { name: 'utilGuide', params: {} },
+        empr: { name: 'myoneGuide', params: {} },
       },
     ],
   });

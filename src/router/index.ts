@@ -46,9 +46,9 @@ rt.beforeEach((to, from, next) => {
 rt.afterEach((to) => {
   const headerInfo: IFHeader = {
     title: to.meta.title as string,
-    isShow: !to.meta.hideHeader as boolean,
-    isBack: !to.meta.hideBack as boolean,
-    isHome: !to.meta.hideHome as boolean,
+    hideHeader: (to.meta.hideHeader ?? false) as boolean,
+    hideBack: (to.meta.hideBack ?? false) as boolean,
+    hideHome: (to.meta.hideHome ?? false) as boolean,
   };
 
   $Utils.cmn.setHeader(headerInfo);

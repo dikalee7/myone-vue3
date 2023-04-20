@@ -16,7 +16,7 @@
         <v-card color="basil" flat> <ApiGuide /> </v-card>
       </v-window-item>
       <v-window-item value="tab3">
-        <v-card color="basil" flat> <UtilGuide /> </v-card>
+        <v-card color="basil" flat> <MyoneGuide /> </v-card>
       </v-window-item>
     </v-window>
   </v-card>
@@ -26,10 +26,10 @@
 import { defineComponent, ref } from 'vue';
 import ApiGuide from './ApiGuide.vue';
 import DistGuide from './DistGuide.vue';
-import UtilGuide from './UtilGuide.vue';
+import MyoneGuide from './MyoneGuide.vue';
 
 export default defineComponent({
-  components: { DistGuide, ApiGuide, UtilGuide },
+  components: { DistGuide, ApiGuide, MyoneGuide },
   setup() {
     const tab = ref('tab1');
     const items = ref([

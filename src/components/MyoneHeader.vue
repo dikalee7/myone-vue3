@@ -1,7 +1,7 @@
 <template>
   <v-app-bar
     color="teal-darken-4"
-    v-if="hInfo.isShow"
+    v-if="!hInfo.hideHeader"
     :image="require('/src/assets/image/main/back-header.jpg')"
   >
     <!-- image="https://picsum.photos/1920/1080?random" -->
@@ -14,9 +14,9 @@
     <!-- <template v-slot:append>
       <v-app-bar-nav-icon></v-app-bar-nav-icon>
     </template> -->
-    <v-icon class="ml-5" v-if="!hInfo.isBack">mdi-wallet</v-icon>
+    <v-icon class="ml-5" v-if="hInfo.hideBack">mdi-wallet</v-icon>
 
-    <v-btn icon v-if="hInfo.isBack" @click="goBack">
+    <v-btn icon v-if="!hInfo.hideBack" @click="goBack">
       <v-icon>mdi-arrow-left-circle</v-icon>
     </v-btn>
 
@@ -28,7 +28,7 @@
       <v-icon>mdi-magnify</v-icon>
     </v-btn> -->
 
-    <v-btn icon v-if="hInfo.isHome" @click="goHome">
+    <v-btn icon v-if="!hInfo.hideHome" @click="goHome">
       <v-icon>mdi-home-circle</v-icon>
     </v-btn>
     <!-- <v-app-bar-nav-icon></v-app-bar-nav-icon> -->

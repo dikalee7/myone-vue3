@@ -7,9 +7,9 @@ import { RootState } from '../index';
  */
 export interface IFHeader {
   title?: string;
-  isShow?: boolean;
-  isHome?: boolean;
-  isBack?: boolean;
+  hideHeader?: boolean;
+  hideBack?: boolean;
+  hideHome?: boolean;
 }
 
 export interface IFHeaderModule {
@@ -20,10 +20,10 @@ export const HeaderModule: Module<IFHeaderModule, RootState> = {
   namespaced: true,
   state: () => ({
     headerInfo: {
-      title: '가이드',
-      isShow: true,
-      isHome: true,
-      isBack: true,
+      title: '',
+      hideHeader: false,
+      hideBack: false,
+      hideHome: false,
     },
   }),
   getters: {
