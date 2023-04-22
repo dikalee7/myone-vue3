@@ -50,6 +50,14 @@ export default defineComponent({
 
     return { dialog };
   },
+  mounted() {
+    this.fnInit();
+  },
+  methods: {
+    fnInit() {
+      this.dialog = true;
+    },
+  },
 });
 </script>
 

@@ -37,8 +37,6 @@ const rt = createRouter({
 });
 
 rt.beforeEach((to, from, next) => {
-  console.log('to===>', to);
-  console.log('from===>', from);
   if (to.meta.isLoading) $Utils.cmn.setLoading(true);
   next();
 });

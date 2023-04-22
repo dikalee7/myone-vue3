@@ -8,9 +8,13 @@ import { utils } from '@/util/cmn';
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 import SelectComp from '@/components/vueti/SelectComp.vue';
+import ModalView from '@/components/ModalView.vue';
+import useMo from '@/composables/mo';
 
 loadFonts();
 const app = createApp(App);
 app.config.globalProperties.$utils = utils;
+app.config.globalProperties.$mo = useMo();
 app.component('SelectComp', SelectComp);
+app.component('ModalView', ModalView);
 app.use(router).use(store).use(vuetify).use(VueSweetalert2).mount('#app');
