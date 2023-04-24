@@ -33,50 +33,67 @@
         </v-card-actions>
       </v-card>
 
-      <!-- <SelectComp
+      <SelectComp
         :selectCompData="selectCompData"
         @changeValue="emChangeValue"
-      /> -->
-      <ComponentGuide v-if="showComp" />
-      <UtilGuide v-if="showUtil" />
+      />
+      <ComponentGuide :selectedGuid="selectedValue" />
+      <UtilGuide :selectedGuid="selectedValue" />
     </v-container>
-    <ModalView ref="modal_view" />
+    <ModalView ref="modal_view" @modalConfirm.once="fnConfirm" />
   </div>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref } from 'vue';
+import { defineComponent, ref } from 'vue';
 import ComponentGuide from '@/domains/guide/components/ComponentGuide.vue';
 import UtilGuide from '@/domains/guide/components/UtilGuide.vue';
+import useGdinfo from '@/domains/guide/composables/gdinfo';
 
+interface IFPopRes {
+  callgbn: string;
+  msg: string;
+}
 export default defineComponent({
   components: {
     ComponentGuide,
     UtilGuide,
   },
   setup() {
-    const showCompGuide = ref(false);
+    const gdinfo = useGdinfo();
     const selectCompData = ref({
       label: '구분 선택',
-      items: [
-        { name: '전체', value: 'A' },
-        { name: '컴포넌트', value: 'C' },
-        { name: 'Utils', value: 'U' },
-      ],
+      items: gdinfo.guideList.value.map((it) => {
+        return { name: it.name, value: it.value };
+      }),
       defaultValue: 'A',
     });
 
     const selectedValue = ref(selectCompData.value.defaultValue);
 
-    const showComp = computed(() => {
-      return selectedValue.value == 'C' || selectedValue.value == 'A';
-    });
+    //팝업 컴포넌트
+    const popinfo: any = ref({});
+    popinfo.value['MyoneCompPop'] = {
+      cpath: 'guide/views/MyoneCompPop.vue',
+      cparam: { pTit: '컴포넌트 가이드' },
+      callback: (emv: IFPopRes) => {
+        console.log('MyoneCompPop callback=>', emv);
+      },
+    };
 
-    const showUtil = computed(() => {
-      return selectedValue.value == 'U' || selectedValue.value == 'A';
-    });
+    popinfo.value['MyoneUtilPop'] = {
+      cpath: 'guide/views/MyoneUtilPop.vue',
+      cparam: { pTit: '유틸 가이드' },
+      callback: (emv: object) => {
+        console.log('MyoneUtilPop callback=>', emv);
+      },
+    };
 
-    return { selectCompData, selectedValue, showComp, showUtil, showCompGuide };
+    return {
+      selectCompData,
+      selectedValue,
+      popinfo,
+    };
   },
   methods: {
     emChangeValue(v: string) {
@@ -84,18 +101,11 @@ export default defineComponent({
     },
 
     fnOpenGuidePop(p: string) {
-      const popinfo: any = {};
-      popinfo['MyoneCompPop'] = {
-        cpath: 'guide/views/MyoneCompPop.vue',
-        cparam: { pTit: '컴포넌트 가이드' },
-      };
+      this.$utils.cmn.setModal(this.popinfo[p]);
+    },
 
-      popinfo['MyoneUtilPop'] = {
-        cpath: 'guide/views/MyoneUtilPop.vue',
-        cparam: { pTit: '유틸 가이드' },
-      };
-
-      this.$utils.cmn.setModal(popinfo[p]);
+    fnConfirm(emv: IFPopRes) {
+      this.popinfo[emv.callgbn].callback(emv);
     },
   },
 });

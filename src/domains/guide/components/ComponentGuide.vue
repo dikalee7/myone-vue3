@@ -1,6 +1,11 @@
 <template>
   <div>
-    <v-card :theme="theme" title="MyoneHeader" class="mb-3">
+    <v-card
+      :theme="theme"
+      title="MyoneHeader"
+      class="mb-3"
+      v-if="sGuid == 'A' || sGuid == 'MyoneHeader'"
+    >
       <v-card-text>
         헤더 영역은 App에 이미 포함되어 있으며, 페이지 제작 후 router meta
         정보에 설정하거나, 제공되는 함수를 이용하여 설정할 수 있다.
@@ -55,24 +60,43 @@ hideHome : 홈 버튼 숨김
       </v-window>
     </v-card>
 
-    <v-card :theme="theme" title="SelectComp" class="mb-3">
-      <v-card-text>콤보박스 공통 가이드</v-card-text>
+    <v-card
+      :theme="theme"
+      title="SelectComp"
+      class="mb-3"
+      v-if="sGuid == 'A' || sGuid == 'SelectComp'"
+    >
+      <v-card-text>셀렉트박스 공통 가이드</v-card-text>
     </v-card>
 
-    <v-card :theme="theme" title="ListComp" class="mb-3">
+    <v-card
+      :theme="theme"
+      title="ListComp"
+      class="mb-3"
+      v-if="sGuid == 'A' || sGuid == 'ListComp'"
+    >
       <v-card-text>리스트 공통 가이드</v-card-text>
     </v-card>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { computed, defineComponent, ref } from 'vue';
 export default defineComponent({
-  setup() {
+  props: {
+    selectedGuid: {
+      type: String,
+      default: 'A',
+    },
+  },
+  setup(props) {
     const theme = ref('light');
     const tab = ref('tab1');
+    const sGuid = computed(() => {
+      return props.selectedGuid;
+    });
 
-    return { theme, tab };
+    return { theme, tab, sGuid };
   },
 });
 </script>

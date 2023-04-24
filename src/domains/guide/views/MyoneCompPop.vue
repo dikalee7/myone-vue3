@@ -35,7 +35,7 @@
                 width="100%"
                 rounded="0"
                 height="50"
-                @click="dialog = false"
+                @click="fnConfirm"
               >
                 확인
               </v-btn>
@@ -57,6 +57,7 @@ interface IFCparam {
 }
 export default defineComponent({
   components: { ComponentGuide },
+  emits: ['modalConfirm'],
   props: {
     cparam: {
       type: Object,
@@ -75,6 +76,13 @@ export default defineComponent({
     fnInit() {
       this.dialog = true;
       this.title = (this.$props.cparam as IFCparam).pTit;
+    },
+    fnConfirm() {
+      this.dialog = false;
+      this.$emit('modalConfirm', {
+        callgbn: 'MyoneCompPop',
+        msg: 'MyoneCompPop confirm',
+      });
     },
   },
 });
