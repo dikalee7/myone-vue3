@@ -3,7 +3,9 @@ import { RootState } from '../index';
 
 /**
  * @param title  title of the header area
- * @param isShow  Screen exposure reference value of the header area
+ * @param hideHeader  Screen exposure reference value of the header area
+ * @param hideBack  Screen exposure reference value of Back button
+ * @param hideHome  Screen exposure reference value of Home button
  */
 export interface IFHeader {
   title?: string;

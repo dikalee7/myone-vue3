@@ -15,7 +15,7 @@
                 class="text-none"
                 append-icon="mdi-arrow-right-bold"
                 variant="text"
-                @click="fnOpenCompDialog"
+                @click="fnOpenGuidePop('MyoneCompPop')"
               >
                 컴포넌트 가이드
               </v-btn>
@@ -24,7 +24,7 @@
                 class="text-none"
                 append-icon="mdi-arrow-right-bold"
                 variant="text"
-                @click="fnOpenUtilDialog"
+                @click="fnOpenGuidePop('MyoneUtilPop')"
               >
                 유틸 가이드
               </v-btn>
@@ -83,15 +83,19 @@ export default defineComponent({
       this.selectedValue = v;
     },
 
-    fnOpenCompDialog() {
-      // (this.$refs.comp_pop as InstanceType<typeof MyoneCompPop>).dialog = true;
-      (this.$refs.modal_view as any).setModal('guide/views/MyoneCompPop.vue');
-    },
+    fnOpenGuidePop(p: string) {
+      const popinfo: any = {};
+      popinfo['MyoneCompPop'] = {
+        cpath: 'guide/views/MyoneCompPop.vue',
+        cparam: { pTit: '컴포넌트 가이드' },
+      };
 
-    fnOpenUtilDialog() {
-      // (this.$refs.util_pop as InstanceType<typeof MyoneUtilPop>).dialog = true;
-      // this.$mo.modal('test');
-      (this.$refs.modal_view as any).setModal('guide/views/MyoneUtilPop.vue');
+      popinfo['MyoneUtilPop'] = {
+        cpath: 'guide/views/MyoneUtilPop.vue',
+        cparam: { pTit: '유틸 가이드' },
+      };
+
+      this.$utils.cmn.setModal(popinfo[p]);
     },
   },
 });

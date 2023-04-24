@@ -2,7 +2,14 @@
   <v-row justify="center">
     <v-dialog v-model="dialog" fullscreen scrollable>
       <v-card>
-        <v-card-title>유틸 가이드</v-card-title>
+        <v-card-title class="d-flex align-center justify-space-between">
+          <span class="font-weight-bold">{{ title }}</span>
+          <v-btn
+            variant="text"
+            icon="mdi-close"
+            @click="dialog = false"
+          ></v-btn>
+        </v-card-title>
         <v-divider></v-divider>
         <v-card-text class="pa-2"> <UtilGuide /> </v-card-text>
         <v-divider></v-divider>
@@ -43,12 +50,22 @@
 import { defineComponent, ref } from 'vue';
 import UtilGuide from '../components/UtilGuide.vue';
 
+interface IFCparam {
+  dFlag: boolean;
+  pTit: string;
+}
 export default defineComponent({
   components: { UtilGuide },
+  props: {
+    cparam: {
+      type: Object,
+    },
+  },
   setup() {
     const dialog = ref(false);
+    const title = ref('');
 
-    return { dialog };
+    return { dialog, title };
   },
   mounted() {
     this.fnInit();
@@ -56,6 +73,7 @@ export default defineComponent({
   methods: {
     fnInit() {
       this.dialog = true;
+      this.title = (this.$props.cparam as IFCparam).pTit;
     },
   },
 });

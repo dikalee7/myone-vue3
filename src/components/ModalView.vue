@@ -1,32 +1,38 @@
 <template>
   <div>
-    <component :is="loadedModal" ref="comp_modal" />
+    <component :is="loadedModal" :cparam="modalInfo.cparam" />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, defineAsyncComponent, ref } from 'vue';
+import {
+  defineComponent,
+  computed,
+  defineAsyncComponent,
+  ComputedRef,
+} from 'vue';
+import { useStore } from 'vuex';
+import { IFModal } from '@/store/modules/modalInfo';
 
 export default defineComponent({
   setup() {
-    const cpath = ref('');
+    const store = useStore();
+    const modalInfo: ComputedRef<IFModal> = computed(
+      () => store.getters['ModalModule/getModalInfo'],
+    );
 
     const loadedModal = computed(() => {
-      if (cpath.value == '') {
+      const cp = modalInfo.value.cpath;
+      if (cp == '') {
         return false;
       } else {
         return defineAsyncComponent(() => {
-          return import(`@/domains/${cpath.value}`);
+          return import(`@/domains/${cp}`);
         });
       }
     });
 
-    return { loadedModal, cpath };
-  },
-  methods: {
-    setModal(p: string) {
-      this.cpath = p;
-    },
+    return { loadedModal, modalInfo };
   },
 });
 </script>
