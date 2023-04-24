@@ -1,6 +1,11 @@
 <template>
   <div>
-    <component :is="loadedModal" :cparam="modalInfo.cparam" />
+    <component
+      :is="loadedModal"
+      :cparam="modalInfo.cparam"
+      @modalConfirm.once="fnConfirm"
+      @modalCancel.once="fnCancel"
+    />
   </div>
 </template>
 
@@ -15,6 +20,7 @@ import { useStore } from 'vuex';
 import { IFModal } from '@/store/modules/modalInfo';
 
 export default defineComponent({
+  emits: ['modalConfirm', 'modalCancel'],
   setup() {
     const store = useStore();
     const modalInfo: ComputedRef<IFModal> = computed(
@@ -33,6 +39,14 @@ export default defineComponent({
     });
 
     return { loadedModal, modalInfo };
+  },
+  methods: {
+    fnConfirm(...arg: any) {
+      this.$emit('modalConfirm', ...arg);
+    },
+    fnCancel(...arg: any) {
+      this.$emit('modalConfirm', ...arg);
+    },
   },
 });
 </script>
