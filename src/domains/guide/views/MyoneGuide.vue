@@ -15,7 +15,7 @@
                 class="text-none"
                 append-icon="mdi-arrow-right-bold"
                 variant="text"
-                @click="fnOpenCompDialog"
+                @click="fnOpenGuidePop('MyoneCompPop')"
               >
                 컴포넌트 가이드
               </v-btn>
@@ -24,7 +24,7 @@
                 class="text-none"
                 append-icon="mdi-arrow-right-bold"
                 variant="text"
-                @click="fnOpenUtilDialog"
+                @click="fnOpenGuidePop('MyoneUtilPop')"
               >
                 유틸 가이드
               </v-btn>
@@ -40,8 +40,7 @@
       <ComponentGuide v-if="showComp" />
       <UtilGuide v-if="showUtil" />
     </v-container>
-    <MyoneCompPop ref="comp_pop" />
-    <MyoneUtilPop ref="util_pop" />
+    <ModalView ref="modal_view" />
   </div>
 </template>
 
@@ -49,15 +48,11 @@
 import { computed, defineComponent, ref } from 'vue';
 import ComponentGuide from '@/domains/guide/components/ComponentGuide.vue';
 import UtilGuide from '@/domains/guide/components/UtilGuide.vue';
-import MyoneCompPop from '@/domains/guide/views/MyoneCompPop.vue';
-import MyoneUtilPop from '@/domains/guide/views/MyoneUtilPop.vue';
 
 export default defineComponent({
   components: {
     ComponentGuide,
     UtilGuide,
-    MyoneCompPop,
-    MyoneUtilPop,
   },
   setup() {
     const showCompGuide = ref(false);
@@ -83,25 +78,24 @@ export default defineComponent({
 
     return { selectCompData, selectedValue, showComp, showUtil, showCompGuide };
   },
-
-  mounted() {
-    this.fnInit();
-  },
   methods: {
-    fnInit() {
-      console.log('초기값 수행');
-    },
-
     emChangeValue(v: string) {
       this.selectedValue = v;
     },
 
-    fnOpenCompDialog() {
-      (this.$refs.comp_pop as InstanceType<typeof MyoneCompPop>).dialog = true;
-    },
+    fnOpenGuidePop(p: string) {
+      const popinfo: any = {};
+      popinfo['MyoneCompPop'] = {
+        cpath: 'guide/views/MyoneCompPop.vue',
+        cparam: { pTit: '컴포넌트 가이드' },
+      };
 
-    fnOpenUtilDialog() {
-      (this.$refs.util_pop as InstanceType<typeof MyoneUtilPop>).dialog = true;
+      popinfo['MyoneUtilPop'] = {
+        cpath: 'guide/views/MyoneUtilPop.vue',
+        cparam: { pTit: '유틸 가이드' },
+      };
+
+      this.$utils.cmn.setModal(popinfo[p]);
     },
   },
 });

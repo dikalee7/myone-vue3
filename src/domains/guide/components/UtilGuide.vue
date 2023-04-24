@@ -3,6 +3,9 @@
     <v-card :theme="theme" title="this.$utils.cmn.alert" class="mb-3">
       <v-card-text>알림(alert, confirm) 공통 가이드</v-card-text>
     </v-card>
+    <v-card :theme="theme" title="this.$utils.cmn.setModal" class="mb-3">
+      <v-card-text>동적 팝업 가이드</v-card-text>
+    </v-card>
   </div>
 </template>
 

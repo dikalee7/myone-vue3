@@ -32,9 +32,6 @@ export default defineComponent({
     );
     return { selectedValue };
   },
-  mounted() {
-    console.log(this.selectedValue);
-  },
   methods: {
     changeValue() {
       this.$emit('changeValue', this.selectedValue);

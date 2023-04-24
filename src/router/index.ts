@@ -2,9 +2,10 @@ import { createWebHistory, createRouter } from 'vue-router';
 import GuideRouter from '@/domains/guide/router/index';
 import MainRouter from '@/domains/main/router/index';
 import TrafficRouter from '@/domains/traffic/router/index';
-import { utils as $Utils } from '@/util/cmn';
+import useCmn from '@/composables/cmn';
 import { IFHeader } from '@/store/modules/headerInfo';
 
+const $utils = useCmn();
 const rt = createRouter({
   history: createWebHistory(),
   routes: [
@@ -37,13 +38,13 @@ const rt = createRouter({
 });
 
 rt.beforeEach((to, from, next) => {
-  console.log('to===>', to);
-  console.log('from===>', from);
-  if (to.meta.isLoading) $Utils.cmn.setLoading(true);
+  if (to.meta.isLoading) $utils.cmn.setLoading(true);
   next();
 });
 
 rt.afterEach((to) => {
+  $utils.cmn.setLoading(to.meta.continueLoading as boolean);
+
   const headerInfo: IFHeader = {
     title: to.meta.title as string,
     hideHeader: (to.meta.hideHeader ?? false) as boolean,
@@ -51,8 +52,7 @@ rt.afterEach((to) => {
     hideHome: (to.meta.hideHome ?? false) as boolean,
   };
 
-  $Utils.cmn.setHeader(headerInfo);
-  $Utils.cmn.setLoading(to.meta.continueLoading as boolean);
+  $utils.cmn.setHeader(headerInfo);
 });
 
 export default rt;
