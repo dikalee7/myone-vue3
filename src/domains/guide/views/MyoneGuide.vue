@@ -89,19 +89,6 @@ export default defineComponent({
       },
     };
 
-    onMounted(() => {
-      _this.$utils.cmn.setHeader({
-        title: '타이틀 변경',
-        hideHeader: false,
-        hideBack: true,
-        hideHome: true,
-      });
-    });
-
-    // const fnOpenGuidePop = (p: string) => {
-    //   _this.$utils.cmn.setModal(popinfo.value[p]);
-    // };
-
     return {
       selectCompData,
       selectedValue,
