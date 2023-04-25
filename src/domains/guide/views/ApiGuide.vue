@@ -52,7 +52,7 @@ import { defineComponent, ref } from 'vue';
 import { publicApiCall } from '@/api/index';
 import { IFBillInfoDetail } from '@/api/type';
 import { AxiosResponse } from 'axios';
-import TableView, { TB_THEME, IFTbData } from '@/components/TableView.vue';
+import TableView, { TB_THEME, IFTbData } from '@/components/ui/TableView.vue';
 
 export default defineComponent({
   components: { TableView },

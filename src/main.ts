@@ -7,7 +7,7 @@ import { loadFonts } from './plugins/webfontloader';
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 import SelectComp from '@/components/vueti/SelectComp.vue';
-import ModalView from '@/components/ModalView.vue';
+import ModalView from '@/components/modal/ModalView.vue';
 import useCmn from '@/composables/cmn';
 import useMo from '@/composables/mo';
 import mitt from 'mitt';

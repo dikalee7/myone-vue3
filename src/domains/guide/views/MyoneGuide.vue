@@ -45,7 +45,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, Ref, ref } from 'vue';
+import { defineComponent, Ref, ref } from 'vue';
 import ComponentGuide from '@/domains/guide/components/ComponentGuide.vue';
 import UtilGuide from '@/domains/guide/components/UtilGuide.vue';
 import guideCmn from '@/domains/guide/composables/index';
