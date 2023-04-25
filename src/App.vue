@@ -3,7 +3,6 @@
     <MyoneHeader />
     <v-main>
       <router-view />
-      <!-- <MyoneFooter /> -->
       <LoadingOverlay />
     </v-main>
   </v-layout>
@@ -11,8 +10,8 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import LoadingOverlay from './components/LoadingOverlay.vue';
-import MyoneHeader from './components/MyoneHeader.vue';
+import LoadingOverlay from './components/layout/LoadingOverlay.vue';
+import MyoneHeader from './components/layout/MyoneHeader.vue';
 
 export default defineComponent({
   components: { LoadingOverlay, MyoneHeader },

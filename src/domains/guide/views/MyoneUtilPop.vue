@@ -2,45 +2,15 @@
   <v-row justify="center">
     <v-dialog v-model="dialog" fullscreen scrollable>
       <v-card>
-        <v-card-title class="d-flex align-center justify-space-between">
-          <span class="font-weight-bold">{{ title }}</span>
-          <v-btn
-            variant="text"
-            icon="mdi-close"
-            @click="dialog = false"
-          ></v-btn>
-        </v-card-title>
-        <v-divider></v-divider>
+        <PopupHeader :title="title" @closePopup="fnClosePop" />
+
         <v-card-text class="pa-2"> <UtilGuide /> </v-card-text>
-        <v-divider></v-divider>
-        <v-card-actions class="pa-0">
-          <v-row align="center" justify="center" no-gutters>
-            <!-- <v-col cols="6">
-              <v-btn
-                color="grey-lighten-3"
-                variant="flat"
-                width="100%"
-                rounded="0"
-                height="50"
-                @click="dialog = false"
-              >
-                취소
-              </v-btn>
-            </v-col> -->
-            <v-col cols="12">
-              <v-btn
-                color="indigo-darken-3"
-                variant="flat"
-                width="100%"
-                rounded="0"
-                height="50"
-                @click="dialog = false"
-              >
-                확인
-              </v-btn>
-            </v-col>
-          </v-row>
-        </v-card-actions>
+
+        <ActionButton
+          @confirm="fnConfirm"
+          :cancel="{ hide: true }"
+          :confirm="{ name: '닫기', hide: false }"
+        />
       </v-card>
     </v-dialog>
   </v-row>
@@ -48,6 +18,8 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
+import ActionButton from '@/components/layout/ActionButton.vue';
+import PopupHeader from '@/components/layout/PopupHeader.vue';
 import UtilGuide from '../components/UtilGuide.vue';
 
 interface IFCparam {
@@ -55,7 +27,7 @@ interface IFCparam {
   pTit: string;
 }
 export default defineComponent({
-  components: { UtilGuide },
+  components: { UtilGuide, PopupHeader, ActionButton },
   props: {
     cparam: {
       type: Object,
@@ -74,6 +46,17 @@ export default defineComponent({
     fnInit() {
       this.dialog = true;
       this.title = (this.$props.cparam as IFCparam).pTit;
+    },
+    fnClosePop() {
+      this.$utils.cmn.closeModal();
+      this.dialog = false;
+    },
+    fnConfirm() {
+      this.fnClosePop();
+      this.$emit('modalConfirm', {
+        callgbn: 'MyoneUtilPop',
+        msg: 'MyoneUtilPop confirm',
+      });
     },
   },
 });

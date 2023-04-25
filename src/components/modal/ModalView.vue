@@ -30,7 +30,9 @@ export default defineComponent({
     const loadedModal = computed(() => {
       const cp = modalInfo.value.cpath;
       if (cp == '') {
-        return false;
+        return defineAsyncComponent(() => {
+          return import(`@/components/BaseComp.vue`);
+        });
       } else {
         return defineAsyncComponent(() => {
           return import(`@/domains/${cp}`);

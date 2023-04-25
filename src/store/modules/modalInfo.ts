@@ -29,7 +29,16 @@ export const ModalModule: Module<IFModalModule, RootState> = {
   },
   mutations: {
     setModalInfo(state, modalInfo: IFModal) {
-      state.modalInfo = modalInfo;
+      state.modalInfo = {
+        ...state.modalInfo,
+        ...modalInfo,
+      };
+    },
+    initModalInfo(state) {
+      state.modalInfo = {
+        cpath: '',
+        cparam: {},
+      };
     },
   },
 };
