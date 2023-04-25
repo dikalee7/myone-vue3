@@ -5,6 +5,7 @@
     "strict": true,
     "noImplicitAny": true, 
     "strictFunctionTypes": true,
+    "strictNullChecks": false,
     "jsx": "preserve",
     "moduleResolution": "node",
     "skipLibCheck": true,

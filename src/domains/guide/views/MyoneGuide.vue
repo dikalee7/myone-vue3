@@ -35,7 +35,7 @@
 
       <SelectComp
         :selectCompData="selectCompData"
-        @changeValue="emChangeValue"
+        @changeValue="(v) => (selectedValue = v)"
       />
       <ComponentGuide :selectedGuid="selectedValue" />
       <UtilGuide :selectedGuid="selectedValue" />
@@ -45,10 +45,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { defineComponent, onMounted, Ref, ref } from 'vue';
 import ComponentGuide from '@/domains/guide/components/ComponentGuide.vue';
 import UtilGuide from '@/domains/guide/components/UtilGuide.vue';
-import useGdinfo from '@/domains/guide/composables/gdinfo';
+import guideCmn from '@/domains/guide/composables/index';
 
 interface IFPopRes {
   callgbn: string;
@@ -60,10 +60,10 @@ export default defineComponent({
     UtilGuide,
   },
   setup() {
-    const gdinfo = useGdinfo();
+    const _this = guideCmn();
     const selectCompData = ref({
       label: '구분 선택',
-      items: gdinfo.guideList.value.map((it) => {
+      items: _this.guideList.value.map((it) => {
         return { name: it.name, value: it.value };
       }),
       defaultValue: 'A',
@@ -72,7 +72,7 @@ export default defineComponent({
     const selectedValue = ref(selectCompData.value.defaultValue);
 
     //팝업 컴포넌트
-    const popinfo: any = ref({});
+    const popinfo: Ref<any> = ref({});
     popinfo.value['MyoneCompPop'] = {
       cpath: 'guide/views/MyoneCompPop.vue',
       cparam: { pTit: '컴포넌트 가이드' },
@@ -89,6 +89,19 @@ export default defineComponent({
       },
     };
 
+    onMounted(() => {
+      _this.$utils.cmn.setHeader({
+        title: '타이틀 변경',
+        hideHeader: false,
+        hideBack: true,
+        hideHome: true,
+      });
+    });
+
+    // const fnOpenGuidePop = (p: string) => {
+    //   _this.$utils.cmn.setModal(popinfo.value[p]);
+    // };
+
     return {
       selectCompData,
       selectedValue,
@@ -96,14 +109,9 @@ export default defineComponent({
     };
   },
   methods: {
-    emChangeValue(v: string) {
-      this.selectedValue = v;
-    },
-
     fnOpenGuidePop(p: string) {
       this.$utils.cmn.setModal(this.popinfo[p]);
     },
-
     fnConfirm(emv: IFPopRes) {
       this.popinfo[emv.callgbn].callback(emv);
     },
