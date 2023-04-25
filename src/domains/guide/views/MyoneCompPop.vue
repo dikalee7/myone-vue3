@@ -5,43 +5,21 @@
         <PopupHeader :title="title" @closePopup="fnClosePop" />
 
         <v-card-text class="pa-2"> <ComponentGuide /> </v-card-text>
-        <v-divider></v-divider>
-        <v-card-actions class="pa-0">
-          <v-row align="center" justify="center" no-gutters>
-            <!-- <v-col cols="6">
-              <v-btn
-                color="grey-lighten-3"
-                variant="flat"
-                width="100%"
-                rounded="0"
-                height="50"
-                @click="dialog = false"
-              >
-                취소
-              </v-btn>
-            </v-col> -->
-            <v-col cols="12">
-              <v-btn
-                color="indigo-darken-3"
-                variant="flat"
-                width="100%"
-                rounded="0"
-                height="50"
-                @click="fnConfirm"
-              >
-                확인
-              </v-btn>
-            </v-col>
-          </v-row>
-        </v-card-actions>
+
+        <ActionButton
+          @confirm="fnConfirm"
+          :cancel="{ hide: true }"
+          :confirm="{ name: '닫기', hide: false }"
+        />
       </v-card>
     </v-dialog>
   </v-row>
 </template>
 
 <script lang="ts">
-import PopupHeader from '@/components/layout/PopupHeader.vue';
 import { defineComponent, ref } from 'vue';
+import ActionButton from '@/components/layout/ActionButton.vue';
+import PopupHeader from '@/components/layout/PopupHeader.vue';
 import ComponentGuide from '../components/ComponentGuide.vue';
 
 interface IFCparam {
@@ -49,7 +27,7 @@ interface IFCparam {
   pTit: string;
 }
 export default defineComponent({
-  components: { ComponentGuide, PopupHeader },
+  components: { ComponentGuide, PopupHeader, ActionButton },
   emits: ['modalConfirm'],
   props: {
     cparam: {
