@@ -8,6 +8,7 @@ export interface IFCmn {
   setLoading: (f: boolean) => void;
   setHeader: (o: IFHeader) => void;
   setModal: (o: IFModal) => void;
+  closeModal: () => void;
 }
 
 export interface IFUtils {
@@ -25,6 +26,9 @@ export default function (): IFUtils {
     },
     setModal: (o: IFModal) => {
       store.commit('ModalModule/setModalInfo', o);
+    },
+    closeModal: () => {
+      store.commit('ModalModule/initModalInfo');
     },
   };
 

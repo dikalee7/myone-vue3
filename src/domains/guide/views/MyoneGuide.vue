@@ -73,7 +73,7 @@ export default defineComponent({
 
     //팝업 컴포넌트
     const popinfo: Ref<any> = ref({});
-    popinfo.value['MyoneCompPop'] = {
+    popinfo.value.MyoneCompPop = {
       cpath: 'guide/views/MyoneCompPop.vue',
       cparam: { pTit: '컴포넌트 가이드' },
       callback: (emv: IFPopRes) => {
@@ -81,7 +81,7 @@ export default defineComponent({
       },
     };
 
-    popinfo.value['MyoneUtilPop'] = {
+    popinfo.value.MyoneUtilPop = {
       cpath: 'guide/views/MyoneUtilPop.vue',
       cparam: { pTit: '유틸 가이드' },
       callback: (emv: object) => {
@@ -100,7 +100,15 @@ export default defineComponent({
       this.$utils.cmn.setModal(this.popinfo[p]);
     },
     fnConfirm(emv: IFPopRes) {
-      this.popinfo[emv.callgbn].callback(emv);
+      switch (emv.callgbn) {
+        case 'MyoneCompPop':
+          console.log('MyoneUtilPop callback=>', emv);
+          break;
+
+        case 'MyoneUtilPop':
+          console.log('MyoneUtilPop callback=>', emv);
+          break;
+      }
     },
   },
 });

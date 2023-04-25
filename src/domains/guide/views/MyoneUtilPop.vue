@@ -4,11 +4,7 @@
       <v-card>
         <v-card-title class="d-flex align-center justify-space-between">
           <span class="font-weight-bold">{{ title }}</span>
-          <v-btn
-            variant="text"
-            icon="mdi-close"
-            @click="dialog = false"
-          ></v-btn>
+          <v-btn variant="text" icon="mdi-close" @click="fnClosePop"></v-btn>
         </v-card-title>
         <v-divider></v-divider>
         <v-card-text class="pa-2"> <UtilGuide /> </v-card-text>
@@ -34,7 +30,7 @@
                 width="100%"
                 rounded="0"
                 height="50"
-                @click="dialog = false"
+                @click="fnConfirm"
               >
                 확인
               </v-btn>
@@ -74,6 +70,17 @@ export default defineComponent({
     fnInit() {
       this.dialog = true;
       this.title = (this.$props.cparam as IFCparam).pTit;
+    },
+    fnClosePop() {
+      this.$utils.cmn.closeModal();
+      this.dialog = false;
+    },
+    fnConfirm() {
+      this.fnClosePop();
+      this.$emit('modalConfirm', {
+        callgbn: 'MyoneUtilPop',
+        msg: 'MyoneUtilPop confirm',
+      });
     },
   },
 });
