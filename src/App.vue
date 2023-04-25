@@ -3,7 +3,6 @@
     <MyoneHeader />
     <v-main>
       <router-view />
-      <!-- <MyoneFooter /> -->
       <LoadingOverlay />
     </v-main>
   </v-layout>
