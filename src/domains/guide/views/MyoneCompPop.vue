@@ -2,12 +2,8 @@
   <v-row justify="center">
     <v-dialog v-model="dialog" fullscreen scrollable>
       <v-card>
-        <v-card-title class="d-flex align-center justify-space-between">
-          <span class="font-weight-bold">{{ title }}</span>
-          <v-btn variant="text" icon="mdi-close" @click="fnClosePop"></v-btn>
-        </v-card-title>
+        <PopupHeader :title="title" @closePopup="fnClosePop" />
 
-        <v-divider></v-divider>
         <v-card-text class="pa-2"> <ComponentGuide /> </v-card-text>
         <v-divider></v-divider>
         <v-card-actions class="pa-0">
@@ -44,6 +40,7 @@
 </template>
 
 <script lang="ts">
+import PopupHeader from '@/components/layout/PopupHeader.vue';
 import { defineComponent, ref } from 'vue';
 import ComponentGuide from '../components/ComponentGuide.vue';
 
@@ -52,7 +49,7 @@ interface IFCparam {
   pTit: string;
 }
 export default defineComponent({
-  components: { ComponentGuide },
+  components: { ComponentGuide, PopupHeader },
   emits: ['modalConfirm'],
   props: {
     cparam: {
