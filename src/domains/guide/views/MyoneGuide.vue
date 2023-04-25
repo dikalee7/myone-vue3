@@ -40,7 +40,7 @@
       <ComponentGuide :selectedGuid="selectedValue" />
       <UtilGuide :selectedGuid="selectedValue" />
     </v-container>
-    <ModalView ref="modal_view" @modalConfirm.once="fnConfirm" />
+    <ModalView ref="modal_view" @modalConfirm="fnConfirm" />
   </div>
 </template>
 
@@ -76,17 +76,11 @@ export default defineComponent({
     popinfo.value.MyoneCompPop = {
       cpath: 'guide/views/MyoneCompPop.vue',
       cparam: { pTit: '컴포넌트 가이드' },
-      callback: (emv: IFPopRes) => {
-        console.log('MyoneCompPop callback=>', emv);
-      },
     };
 
     popinfo.value.MyoneUtilPop = {
       cpath: 'guide/views/MyoneUtilPop.vue',
       cparam: { pTit: '유틸 가이드' },
-      callback: (emv: object) => {
-        console.log('MyoneUtilPop callback=>', emv);
-      },
     };
 
     return {
@@ -102,7 +96,7 @@ export default defineComponent({
     fnConfirm(emv: IFPopRes) {
       switch (emv.callgbn) {
         case 'MyoneCompPop':
-          console.log('MyoneUtilPop callback=>', emv);
+          console.log('MyoneCompPop callback=>', emv);
           break;
 
         case 'MyoneUtilPop':
