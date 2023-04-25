@@ -62,6 +62,20 @@ hideHome : 홈 버튼 숨김
 
     <v-card
       :theme="theme"
+      title="PopupHeader"
+      class="mb-3"
+      v-if="sGuid == 'A' || sGuid == 'PopupHeader'"
+    >
+      <v-card-text>팝업 페이지 헤더 컴포넌트</v-card-text>
+      <v-card-text class="bg-grey-darken-4 mt-1 vSpace">
+        <pre>
+  {{ popupHeaderGuide }}
+        </pre>
+      </v-card-text>
+    </v-card>
+
+    <v-card
+      :theme="theme"
       title="SelectComp"
       class="mb-3"
       v-if="sGuid == 'A' || sGuid == 'SelectComp'"
@@ -96,7 +110,26 @@ export default defineComponent({
       return props.selectedGuid;
     });
 
-    return { theme, tab, sGuid };
+    const popupHeaderGuide = ref(`
+- 예시
+<template>
+  <div>
+    <PopupHeader :title="title" :closeFlg="true" @closePopup="fnClosePop" />
+  </div>
+</template>
+(...중략...)
+import PopupHeader from '@/components/layout/PopupHeader.vue';
+
+- 옵션
+title : 헤더 제목
+closeFlg : 헤더 우측 X 버튼 표시 여부 (생략가능 기본 true)
+closePopup : 헤더 우측 X 버튼 클릭시 동작 연결
+
+- 샘플 
+\\src\\domains\\sample\\views\\SamplePop.vue
+    `);
+
+    return { theme, tab, sGuid, popupHeaderGuide };
   },
 });
 </script>
