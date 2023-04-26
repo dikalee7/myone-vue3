@@ -6,11 +6,11 @@
 
         <v-card-text class="pa-2"> <UtilGuide /> </v-card-text>
 
-        <ActionButton
+        <!-- <ActionButton
           @confirm="fnConfirm"
           :cancel="{ hide: true }"
           :confirm="{ name: '닫기', hide: false }"
-        />
+        /> -->
       </v-card>
     </v-dialog>
   </v-row>
@@ -18,8 +18,6 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import ActionButton from '@/components/layout/ActionButton.vue';
-import PopupHeader from '@/components/layout/PopupHeader.vue';
 import UtilGuide from '../components/UtilGuide.vue';
 
 interface IFCparam {
@@ -27,7 +25,7 @@ interface IFCparam {
   pTit: string;
 }
 export default defineComponent({
-  components: { UtilGuide, PopupHeader, ActionButton },
+  components: { UtilGuide },
   props: {
     cparam: {
       type: Object,
