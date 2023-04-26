@@ -2,6 +2,7 @@
   <div>
     <v-card
       :theme="theme"
+      :color="cardColor"
       title="this.$utils.cmn.alert"
       class="mb-3"
       v-if="sGuid == 'A' || sGuid == 'AlertUtil'"
@@ -10,6 +11,7 @@
     </v-card>
     <v-card
       :theme="theme"
+      :color="cardColor"
       title="this.$utils.cmn.setModal"
       class="mb-3"
       v-if="sGuid == 'A' || sGuid == 'ModalUtil'"
@@ -30,11 +32,12 @@ export default defineComponent({
     },
   },
   setup(props) {
+    const cardColor = ref('blue-grey-darken-2');
     const theme = ref('light');
     const sGuid = computed(() => {
       return props.selectedGuid;
     });
-    return { theme, sGuid };
+    return { cardColor, theme, sGuid };
   },
 });
 </script>

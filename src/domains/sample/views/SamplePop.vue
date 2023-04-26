@@ -5,11 +5,9 @@
 </template>
 
 <script lang="ts">
-import PopupHeader from '@/components/layout/PopupHeader.vue';
 import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
-  components: { PopupHeader },
   setup() {
     const dialog = ref(false);
     const title = ref('샘플팝업');

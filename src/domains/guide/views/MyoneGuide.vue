@@ -31,12 +31,12 @@
             </v-col>
           </v-row>
         </v-card-actions>
+        <SelectComp
+          :selectCompData="selectCompData"
+          @changeValue="(v) => (selectedValue = v)"
+        />
       </v-card>
 
-      <SelectComp
-        :selectCompData="selectCompData"
-        @changeValue="(v) => (selectedValue = v)"
-      />
       <ComponentGuide :selectedGuid="selectedValue" />
       <UtilGuide :selectedGuid="selectedValue" />
     </v-container>
