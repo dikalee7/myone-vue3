@@ -20,12 +20,9 @@
 import { defineComponent, ref } from 'vue';
 import UtilGuide from '../components/UtilGuide.vue';
 
-interface IFCparam {
-  dFlag: boolean;
-  pTit: string;
-}
 export default defineComponent({
   components: { UtilGuide },
+  // emits: ['modalConfirm'],
   props: {
     cparam: {
       type: Object,
@@ -33,29 +30,24 @@ export default defineComponent({
   },
   setup() {
     const dialog = ref(false);
-    const title = ref('');
+    const title = ref('유틸 가이드');
 
     return { dialog, title };
   },
-  mounted() {
-    this.fnInit();
-  },
   methods: {
-    fnInit() {
+    fnOpenPop() {
       this.dialog = true;
-      this.title = (this.$props.cparam as IFCparam).pTit;
     },
     fnClosePop() {
-      this.$utils.cmn.closeModal();
       this.dialog = false;
     },
-    fnConfirm() {
-      this.fnClosePop();
-      this.$emit('modalConfirm', {
-        callgbn: 'MyoneUtilPop',
-        msg: 'MyoneUtilPop confirm',
-      });
-    },
+    // fnConfirm() {
+    //   this.fnClosePop();
+    //   this.$emit('modalConfirm', {
+    //     callgbn: 'MyoneUtilPop',
+    //     msg: 'MyoneUtilPop confirm',
+    //   });
+    // },
   },
 });
 </script>
