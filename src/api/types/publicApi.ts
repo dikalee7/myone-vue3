@@ -28,7 +28,7 @@ export interface IFBillInfoDetail {
   proposerKind: string;
 }
 
-export interface IFResponse {
+export interface IFPublicApiResponse {
   response: {
     header: {
       resultCode: string;
@@ -42,7 +42,7 @@ export interface IFResponse {
   };
 }
 
-export interface IFResult<T> {
+export interface IFPublicApiResult<T> {
   resultCode: string;
   resultMsg: string;
   data: T[];

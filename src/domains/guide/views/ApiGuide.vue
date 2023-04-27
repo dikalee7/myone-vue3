@@ -50,7 +50,7 @@ async callBillInfo() {
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 import { publicApiCall } from '@/api/index';
-import { IFBillInfoDetail } from '@/api/type';
+import { IFBillInfoDetail } from '@/api/types/publicApi';
 import { AxiosResponse } from 'axios';
 import TableView, { TB_THEME, IFTbData } from '@/components/ui/TableView.vue';
 
