@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mb-6">
     <v-card
       :theme="theme"
       :color="cardColor"
@@ -17,6 +17,8 @@
         헤더 영역은 App에 이미 포함되어 있으며, 페이지 제작 후 router meta
         정보에 설정하거나, 제공되는 함수를 이용하여 설정할 수 있다.
       </v-card-text>
+      <v-divider></v-divider>
+
       <v-tabs v-model="tab" color="indigo-lighten-4" align-tabs="center">
         <v-tab value="tab1">Router 설정</v-tab>
         <v-tab value="tab2">함수 호출</v-tab>
@@ -81,6 +83,7 @@ hideHome : 홈 버튼 숨김
         </v-chip>
       </v-card-subtitle>
       <v-card-text> 팝업 페이지 헤더 컴포넌트 </v-card-text>
+      <v-divider></v-divider>
 
       <v-card :color="cardColor" class="pa-1">
         <v-card-text class="bg-grey-darken-4 vSpace">
@@ -104,7 +107,9 @@ hideHome : 홈 버튼 숨김
           전역 컴포넌트
         </v-chip>
       </v-card-subtitle>
-      <v-card-text>셀렉트박스 공통 가이드</v-card-text>
+      <v-card-text>셀렉트박스</v-card-text>
+      <v-divider></v-divider>
+      <SampleButton @goSample="fnOpenSample('sample_select')" />
       <v-card :color="cardColor" class="pa-1">
         <v-card-text class="bg-grey-darken-4 vSpace">
           <pre>
@@ -122,13 +127,22 @@ hideHome : 홈 버튼 숨김
       v-if="sGuid == 'A' || sGuid == 'ListComp'"
     >
       <v-card-text>리스트 공통 가이드</v-card-text>
+      <v-divider></v-divider>
+      <SampleButton @goSample="fnOpenSample('sample_list')" />
     </v-card>
+
+    <SampleSelect ref="sample_select" />
+    <SampleList ref="sample_list" />
   </div>
 </template>
 
 <script lang="ts">
 import { computed, defineComponent, ref } from 'vue';
+import SampleSelect from '@/domains/sample/views/SampleSelect.vue';
+import SampleButton from './SampleButton.vue';
+import SampleList from '@/domains/sample/views/SampleList.vue';
 export default defineComponent({
+  components: { SampleSelect, SampleButton, SampleList },
   props: {
     selectedGuid: {
       type: String,
@@ -183,6 +197,11 @@ changeValue : 선택 변경시 값 변경
     `);
 
     return { cardColor, theme, tab, sGuid, popupHeaderGuide, selectCompGuide };
+  },
+  methods: {
+    fnOpenSample(compRef: string) {
+      (this.$refs[compRef] as InstanceType<any>).fnOpenPop();
+    },
   },
 });
 </script>

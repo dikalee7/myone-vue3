@@ -3,9 +3,7 @@
     <v-dialog v-model="dialog" fullscreen scrollable>
       <v-card>
         <PopupHeader :title="title" @closePopup="fnClosePop" />
-
         <v-card-text class="pa-2"> <ComponentGuide /> </v-card-text>
-
         <!-- <ActionButton
           @confirm="fnConfirm"
           :cancel="{ hide: true }"
@@ -20,13 +18,9 @@
 import { defineComponent, ref } from 'vue';
 import ComponentGuide from '../components/ComponentGuide.vue';
 
-interface IFCparam {
-  dFlag: boolean;
-  pTit: string;
-}
 export default defineComponent({
   components: { ComponentGuide },
-  emits: ['modalConfirm'],
+  // emits: ['modalConfirm'],
   props: {
     cparam: {
       type: Object,
@@ -34,29 +28,24 @@ export default defineComponent({
   },
   setup() {
     const dialog = ref(false);
-    const title = ref('');
+    const title = ref('컴포넌트 가이드');
 
     return { dialog, title };
   },
-  mounted() {
-    this.fnInit();
-  },
   methods: {
-    fnInit() {
+    fnOpenPop() {
       this.dialog = true;
-      this.title = (this.$props.cparam as IFCparam).pTit;
     },
     fnClosePop() {
-      this.$utils.cmn.closeModal();
       this.dialog = false;
     },
-    fnConfirm() {
-      this.fnClosePop();
-      this.$emit('modalConfirm', {
-        callgbn: 'MyoneCompPop',
-        msg: 'MyoneCompPop confirm',
-      });
-    },
+    // fnConfirm() {
+    //   this.fnClosePop();
+    //   this.$emit('modalConfirm', {
+    //     callgbn: 'MyoneCompPop',
+    //     msg: 'MyoneCompPop confirm',
+    //   });
+    // },
   },
 });
 </script>

@@ -1,11 +1,13 @@
 <template>
   <div>
-    <component
-      :is="loadedModal"
-      :cparam="modalInfo.cparam"
-      @modalConfirm.once="fnConfirm"
-      @modalCancel.once="fnCancel"
-    />
+    <keep-alive>
+      <component
+        :is="loadedModal"
+        :cparam="modalInfo.cparam"
+        @modalConfirm.once="fnConfirm"
+        @modalCancel.once="fnCancel"
+      />
+    </keep-alive>
   </div>
 </template>
 

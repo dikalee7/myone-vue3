@@ -15,7 +15,7 @@
                 class="text-none"
                 append-icon="mdi-arrow-right-bold"
                 variant="text"
-                @click="fnOpenGuidePop('MyoneCompPop')"
+                @click="fnOpenGuidePop('comp_pop')"
               >
                 컴포넌트 가이드
               </v-btn>
@@ -24,7 +24,7 @@
                 class="text-none"
                 append-icon="mdi-arrow-right-bold"
                 variant="text"
-                @click="fnOpenGuidePop('MyoneUtilPop')"
+                @click="fnOpenGuidePop('util_pop')"
               >
                 유틸 가이드
               </v-btn>
@@ -40,24 +40,25 @@
       <ComponentGuide :selectedGuid="selectedValue" />
       <UtilGuide :selectedGuid="selectedValue" />
     </v-container>
-    <ModalView ref="modal_view" @modalConfirm="fnConfirm" />
+    <MyoneCompPop ref="comp_pop" />
+    <MyoneUtilPop ref="util_pop" />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, Ref, ref } from 'vue';
+import { defineComponent, ref } from 'vue';
 import ComponentGuide from '@/domains/guide/components/ComponentGuide.vue';
 import UtilGuide from '@/domains/guide/components/UtilGuide.vue';
 import guideCmn from '@/domains/guide/composables/index';
+import MyoneCompPop from '@/domains/guide/views/MyoneCompPop.vue';
+import MyoneUtilPop from '@/domains/guide/views/MyoneUtilPop.vue';
 
-interface IFPopRes {
-  callgbn: string;
-  msg: string;
-}
 export default defineComponent({
   components: {
     ComponentGuide,
     UtilGuide,
+    MyoneCompPop,
+    MyoneUtilPop,
   },
   setup() {
     const _this = guideCmn();
@@ -71,38 +72,14 @@ export default defineComponent({
 
     const selectedValue = ref(selectCompData.value.defaultValue);
 
-    //팝업 컴포넌트
-    const popinfo: Ref<any> = ref({});
-    popinfo.value.MyoneCompPop = {
-      cpath: 'guide/views/MyoneCompPop.vue',
-      cparam: { pTit: '컴포넌트 가이드' },
-    };
-
-    popinfo.value.MyoneUtilPop = {
-      cpath: 'guide/views/MyoneUtilPop.vue',
-      cparam: { pTit: '유틸 가이드' },
-    };
-
     return {
       selectCompData,
       selectedValue,
-      popinfo,
     };
   },
   methods: {
-    fnOpenGuidePop(p: string) {
-      this.$utils.cmn.setModal(this.popinfo[p]);
-    },
-    fnConfirm(emv: IFPopRes) {
-      switch (emv.callgbn) {
-        case 'MyoneCompPop':
-          console.log('MyoneCompPop callback=>', emv);
-          break;
-
-        case 'MyoneUtilPop':
-          console.log('MyoneUtilPop callback=>', emv);
-          break;
-      }
+    fnOpenGuidePop(compRef: string) {
+      (this.$refs[compRef] as InstanceType<any>).fnOpenPop();
     },
   },
 });
