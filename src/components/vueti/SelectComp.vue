@@ -1,14 +1,12 @@
 <template>
-  <v-sheet width="90%" class="mx-auto">
-    <v-select
-      v-model="selectedValue"
-      :items="selectCompData.items"
-      item-title="name"
-      item-value="value"
-      :label="selectCompData.label"
-      @update:modelValue="changeValue"
-    ></v-select>
-  </v-sheet>
+  <v-select
+    v-model="selectedValue"
+    :items="selectCompData.items"
+    item-title="name"
+    item-value="value"
+    :label="selectCompData.label"
+    @update:modelValue="changeValue"
+  ></v-select>
 </template>
 
 <script lang="ts">
