@@ -25,7 +25,6 @@ export default defineComponent({
   },
   methods: {
     fnClosePop() {
-      this.$utils.cmn.closeModal();
       this.dialog = false;
     },
   },
