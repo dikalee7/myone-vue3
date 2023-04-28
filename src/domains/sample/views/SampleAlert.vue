@@ -4,16 +4,33 @@
       <v-card>
         <PopupHeader :title="title" @closePopup="fnClosePop" />
 
-        <v-card-text class="pa-2"> 작성중 </v-card-text>
+        <v-card-actions class="">
+          <v-row align="center" justify="center">
+            <v-col cols="auto">
+              <SampleButton
+                :btxt="'alert'"
+                :dCls="'d-inline'"
+                @goSample="fnCall('alert')"
+              />
+              <SampleButton
+                :btxt="'confirm'"
+                :dCls="'d-inline'"
+                @goSample="fnCall('confirm')"
+              />
+            </v-col>
+          </v-row>
+        </v-card-actions>
       </v-card>
     </v-dialog>
   </v-row>
 </template>
 
 <script lang="ts">
+import SampleButton from '@/domains/guide/components/SampleButton.vue';
 import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
+  components: { SampleButton },
   setup() {
     const dialog = ref(false);
     const title = ref('알림(alert, confirm) 샘플');
@@ -26,6 +43,9 @@ export default defineComponent({
     },
     fnClosePop() {
       this.dialog = false;
+    },
+    fnCall(gbn: string) {
+      console.log(gbn);
     },
   },
 });

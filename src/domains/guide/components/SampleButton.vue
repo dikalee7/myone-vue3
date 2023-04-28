@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex justify-end">
+  <div :class="dCls">
     <v-btn
       class="ma-2 pa-2"
       color="orange-lighten-5"
@@ -20,6 +20,10 @@ import { defineComponent } from 'vue';
 export default defineComponent({
   emits: ['goSample'],
   props: {
+    dCls: {
+      type: String,
+      default: 'd-flex justify-end',
+    },
     btxt: {
       type: String,
       default: 'sample',

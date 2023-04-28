@@ -1,14 +1,11 @@
 import store from '@/store';
 import _, { LoDashStatic } from 'lodash';
 import { IFHeader } from '@/store/modules/headerInfo';
-import { IFModal } from '@/store/modules/modalInfo';
 
 export interface IFCmn {
   /** Description : Page Loading */
   setLoading: (f: boolean) => void;
   setHeader: (o: IFHeader) => void;
-  setModal: (o: IFModal) => void;
-  closeModal: () => void;
 }
 
 export interface IFUtils {
@@ -23,12 +20,6 @@ export default function (): IFUtils {
     },
     setHeader: (o: IFHeader) => {
       store.commit('HeaderModule/setHeaderInfo', _.omitBy(o, _.isUndefined));
-    },
-    setModal: (o: IFModal) => {
-      store.commit('ModalModule/setModalInfo', o);
-    },
-    closeModal: () => {
-      store.commit('ModalModule/initModalInfo');
     },
   };
 
