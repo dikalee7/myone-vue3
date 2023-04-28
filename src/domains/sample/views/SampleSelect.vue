@@ -5,12 +5,33 @@
         <PopupHeader :title="title" @closePopup="fnClosePop" />
 
         <v-card-item class="pa-2" height="100">
-          <v-form>
-            <SelectComp
-              :selectCompData="selectCompData1"
-              @changeValue="(v) => (selectedValue1 = v)"
-            />
-          </v-form>
+          <v-sheet width="95%" class="mx-auto">
+            <v-form class="justify-center">
+              <SelectComp
+                :selectCompData="selectCompData1"
+                @changeValue="(v) => (selectedValue1 = v)"
+              />
+
+              <v-text-field
+                v-model="selectedValue1"
+                label="첫번째 선택값"
+                readonly
+              ></v-text-field>
+
+              <v-divider></v-divider>
+              <v-spacer class="pa-2"></v-spacer>
+
+              <SelectComp
+                :selectCompData="selectCompData2"
+                @changeValue="(v) => (selectedValue2 = v)"
+              />
+              <v-text-field
+                v-model="selectedValue2"
+                label="두번째 선택값"
+                readonly
+              ></v-text-field>
+            </v-form>
+          </v-sheet>
         </v-card-item>
       </v-card>
     </v-dialog>
