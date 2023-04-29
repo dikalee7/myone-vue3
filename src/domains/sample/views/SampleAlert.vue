@@ -27,15 +27,17 @@
 
 <script lang="ts">
 import SampleButton from '@/domains/guide/components/SampleButton.vue';
+import guideCmn from '@/domains/guide/composables/index';
 import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
   components: { SampleButton },
   setup() {
+    const mo = guideCmn().useMo();
     const dialog = ref(false);
     const title = ref('알림(alert, confirm) 샘플');
 
-    return { title, dialog };
+    return { title, dialog, mo };
   },
   methods: {
     fnOpenPop() {
@@ -46,6 +48,29 @@ export default defineComponent({
     },
     fnCall(gbn: string) {
       console.log(gbn);
+      switch (gbn) {
+        case 'alert':
+          this.mo
+            .alert({
+              title: '알럿 경고',
+              message: 'alert 메시지 테스트 중',
+            })
+            .then((rslt) => {
+              console.log('rslt==>', rslt);
+            });
+          break;
+
+        case 'confirm':
+          this.mo
+            .confirm({
+              title: '컨펌 확인',
+              message: 'confirm 메시지 테스트 중',
+            })
+            .then((rslt) => {
+              console.log('rslt==>', rslt);
+            });
+          break;
+      }
     },
   },
 });

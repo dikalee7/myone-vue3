@@ -6,6 +6,7 @@
     item-value="value"
     :label="selectCompData.label"
     @update:modelValue="changeValue"
+    ref="myVSelect"
   ></v-select>
 </template>
 
@@ -30,8 +31,12 @@ export default defineComponent({
     );
     return { selectedValue };
   },
+  mounted() {
+    // this.$refs.myVSelect.open = true;
+  },
   methods: {
     changeValue() {
+      debugger;
       this.$emit('changeValue', this.selectedValue);
     },
   },

@@ -45,13 +45,8 @@
 <script lang="ts">
 import { defineComponent, ref, Ref } from 'vue';
 import sanitizeHtml from 'sanitize-html';
+import { IFConfirmOptions, IFConfirmRequset } from '@/composables/types';
 
-interface IFOptions {
-  color: string;
-  width: number;
-  zIndex: number;
-  noconfirm: boolean;
-}
 export default defineComponent({
   setup() {
     const dialog = ref(false);
@@ -59,16 +54,22 @@ export default defineComponent({
     const reject = ref(null);
     const message = ref('');
     const title = ref('');
-    const options: Ref<IFOptions> = ref({
+    const options: Ref<IFConfirmOptions> = ref({
       color: 'grey lighten-3',
       width: 400,
-      zIndex: 200,
+      zIndex: 3000,
       noconfirm: false,
     });
     return { dialog, resolve, reject, message, title, options };
   },
+  mounted() {
+    this.$emitter.on('showAlert', this.testAlert);
+  },
   methods: {
-    open(title: string, message: string, options: IFOptions) {
+    testAlert(p: IFConfirmRequset) {
+      this.open(p.title, p.message, p.options);
+    },
+    open(title: string, message: string, options: IFConfirmOptions) {
       this.dialog = true;
       this.title = title;
       this.message = sanitizeHtml(message);
@@ -79,10 +80,12 @@ export default defineComponent({
       });
     },
     agree() {
+      this.$emitter.emit('returnAlert', true);
       this.resolve(true);
       this.dialog = false;
     },
     cancel() {
+      this.$emitter.emit('returnAlert', false);
       this.resolve(false);
       this.dialog = false;
     },
