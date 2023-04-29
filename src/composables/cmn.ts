@@ -1,17 +1,7 @@
 import store from '@/store';
-import _, { LoDashStatic } from 'lodash';
+import _ from 'lodash';
 import { IFHeader } from '@/store/modules/headerInfo';
-
-export interface IFCmn {
-  /** Description : Page Loading */
-  setLoading: (f: boolean) => void;
-  setHeader: (o: IFHeader) => void;
-}
-
-export interface IFUtils {
-  cmn: IFCmn;
-  _: LoDashStatic;
-}
+import { IFCmn, IFUtils } from '@/composables/types';
 
 export default function (): IFUtils {
   const cmn: IFCmn = {

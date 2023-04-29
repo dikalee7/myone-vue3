@@ -1,4 +1,5 @@
 import { getCurrentInstance, ref } from 'vue';
+import useMo from '@/composables/mo';
 
 export default function () {
   const globalProperties =
@@ -13,5 +14,5 @@ export default function () {
     { gbn: 'UTIL', name: '공통 함수', value: 'UtilsCmn' },
     { gbn: 'UTIL', name: '알림-Alert', value: 'AlertUtil' },
   ]);
-  return { guideList, ...globalProperties };
+  return { guideList, ...globalProperties, useMo };
 }

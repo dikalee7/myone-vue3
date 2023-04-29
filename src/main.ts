@@ -10,12 +10,15 @@ import PopupHeader from '@/components/layout/PopupHeader.vue';
 import ActionButton from '@/components/layout/ActionButton.vue';
 import SelectComp from '@/components/vueti/SelectComp.vue';
 import useCmn from '@/composables/cmn';
+// import useMo from '@/composables/mo';
 import mitt from 'mitt';
 
 loadFonts();
 const app = createApp(App);
 app.config.globalProperties.$utils = useCmn();
 app.config.globalProperties.$emitter = mitt();
+// app.config.globalProperties.$alert = useMo().alert;
+// app.config.globalProperties.$confirm = useMo().confirm;
 app.component('PopupHeader', PopupHeader);
 app.component('ActionButton', ActionButton);
 app.component('SelectComp', SelectComp);
