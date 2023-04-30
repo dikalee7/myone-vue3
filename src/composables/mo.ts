@@ -1,15 +1,19 @@
 import { getCurrentInstance } from 'vue';
-import { IFConfirmRequset } from '@/composables/types';
+import { IFConfirmRequset, IFMo } from '@/composables/types';
 
-export default function () {
+export default function (): IFMo {
   const globalProperties =
     getCurrentInstance().appContext.config.globalProperties;
 
+  const reset = () => {
+    globalProperties.$emitter.off('returnAlert');
+  };
+
   const callback = () => {
     return new Promise((resolve) => {
-      globalProperties.$emitter.off('returnAlert');
+      reset();
       globalProperties.$emitter.on('returnAlert', (f: boolean) => {
-        console.log('callback==>', f);
+        reset();
         resolve(f);
       });
     });

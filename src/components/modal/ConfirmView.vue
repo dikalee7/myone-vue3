@@ -55,7 +55,7 @@ export default defineComponent({
     const message = ref('');
     const title = ref('');
     const options: Ref<IFConfirmOptions> = ref({
-      color: 'grey lighten-3',
+      color: 'indigo',
       width: 400,
       zIndex: 3000,
       noconfirm: false,

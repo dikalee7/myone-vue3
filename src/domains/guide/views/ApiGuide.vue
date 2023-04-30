@@ -57,9 +57,6 @@ import TableView, { TB_THEME, IFTbData } from '@/components/ui/TableView.vue';
 export default defineComponent({
   components: { TableView },
   setup() {
-    // const $utils = (getCurrentInstance() as ComponentInternalInstance)
-    //   .appContext.config.globalProperties.$utils;
-
     const reveal = ref(false);
     const rsltJson = ref('');
     const cmdCls = ref('bg-grey-darken-4 mt-1 vSpace vJson');

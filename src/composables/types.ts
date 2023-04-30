@@ -7,9 +7,16 @@ export interface IFCmn {
   setHeader: (o: IFHeader) => void;
 }
 
+export interface IFMo {
+  /** Description : Page Loading */
+  alert: (o: IFConfirmRequset) => Promise<unknown>;
+  confirm: (o: IFConfirmRequset) => Promise<unknown>;
+}
+
 export interface IFUtils {
   cmn: IFCmn;
   _: LoDashStatic;
+  useMo: () => IFMo;
 }
 
 export interface IFConfirmOptions {
