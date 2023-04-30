@@ -27,13 +27,13 @@
 
 <script lang="ts">
 import SampleButton from '@/domains/guide/components/SampleButton.vue';
-import guideCmn from '@/domains/guide/composables/index';
+import cmn from '@/composables/cmn';
 import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
   components: { SampleButton },
   setup() {
-    const mo = guideCmn().useMo();
+    const mo = cmn().useMo();
     const dialog = ref(false);
     const title = ref('알림(alert, confirm) 샘플');
 
@@ -47,7 +47,6 @@ export default defineComponent({
       this.dialog = false;
     },
     fnCall(gbn: string) {
-      console.log(gbn);
       switch (gbn) {
         case 'alert':
           this.mo

@@ -2,6 +2,7 @@ import store from '@/store';
 import _ from 'lodash';
 import { IFHeader } from '@/store/modules/headerInfo';
 import { IFCmn, IFUtils } from '@/composables/types';
+import useMo from '@/composables/mo';
 
 export default function (): IFUtils {
   const cmn: IFCmn = {
@@ -13,5 +14,5 @@ export default function (): IFUtils {
     },
   };
 
-  return { cmn, _ };
+  return { cmn, _, useMo };
 }
