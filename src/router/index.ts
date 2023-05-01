@@ -41,7 +41,7 @@ const rt = createRouter({
 
 rt.beforeEach((to, from, next) => {
   if (to.meta.isLoading) $utils.cmn.setLoading(true);
-  next();
+  setTimeout(next, 300);
 });
 
 rt.afterEach((to) => {
