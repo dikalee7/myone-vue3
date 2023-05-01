@@ -3,7 +3,7 @@
     :theme="theme"
     fixed-header
     :height="tbData.height"
-    class="ma-2 text-caption"
+    :class="tbData.tbCls ?? 'ma-2 text-caption'"
   >
     <colgroup>
       <col
@@ -50,6 +50,7 @@ export interface IFTdInfo {
 }
 
 export interface IFTbData {
+  tbCls?: string;
   tbTheme?: TB_THEME;
   hdInfo: IFHdInfo[];
   tdInfo: IFTdInfo[];
