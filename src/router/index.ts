@@ -1,4 +1,5 @@
 import { createWebHistory, createRouter } from 'vue-router';
+import SampleRouter from '@/domains/sample/router/index';
 import GuideRouter from '@/domains/guide/router/index';
 import MainRouter from '@/domains/main/router/index';
 import TrafficRouter from '@/domains/traffic/router/index';
@@ -31,6 +32,7 @@ const rt = createRouter({
       path: '/:pathMatch(.*)*',
       redirect: '/notFound',
     },
+    ...SampleRouter,
     ...GuideRouter,
     ...MainRouter,
     ...TrafficRouter,

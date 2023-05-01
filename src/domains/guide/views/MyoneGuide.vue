@@ -15,9 +15,18 @@
                 class="text-none"
                 append-icon="mdi-arrow-right-bold"
                 variant="text"
+                @click="fnGoPage('sampleBasic')"
+              >
+                Basic
+              </v-btn>
+              <v-btn
+                border
+                class="text-none"
+                append-icon="mdi-arrow-right-bold"
+                variant="text"
                 @click="fnOpenGuidePop('comp_pop')"
               >
-                컴포넌트 가이드
+                컴포넌트
               </v-btn>
               <v-btn
                 border
@@ -26,7 +35,7 @@
                 variant="text"
                 @click="fnOpenGuidePop('util_pop')"
               >
-                유틸 가이드
+                유틸
               </v-btn>
             </v-col>
           </v-row>
@@ -83,6 +92,9 @@ export default defineComponent({
   methods: {
     fnOpenGuidePop(compRef: string) {
       (this.$refs[compRef] as InstanceType<any>).fnOpenPop();
+    },
+    fnGoPage(page: string) {
+      this.$router.push({ name: page, params: {} });
     },
   },
 });
