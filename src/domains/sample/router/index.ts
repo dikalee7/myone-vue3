@@ -9,7 +9,7 @@ export default [
     meta: {
       isLoading: true,
       continueLoading: false,
-      title: '샘플 기본',
+      title: '코딩샘플',
     },
   },
 ];

@@ -36,7 +36,6 @@ export default defineComponent({
   },
   methods: {
     changeValue() {
-      debugger;
       this.$emit('changeValue', this.selectedValue);
     },
   },

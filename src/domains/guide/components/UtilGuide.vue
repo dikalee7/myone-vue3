@@ -3,7 +3,7 @@
     <v-card
       :theme="theme"
       :color="cardColor"
-      title="this.$utils.cmn"
+      title="this.cmn"
       class="mb-3"
       v-if="sGuid == 'A' || sGuid == 'UtilsCmn'"
     >
@@ -14,7 +14,7 @@
     <v-card
       :theme="theme"
       :color="cardColor"
-      title="this.$utils.cmn.alert"
+      title="this.mo.alert, this.mo.confirm"
       class="mb-3"
       v-if="sGuid == 'A' || sGuid == 'AlertUtil'"
     >

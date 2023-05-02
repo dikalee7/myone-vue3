@@ -8,15 +8,15 @@
 
     <v-window v-model="tab" disabled>
       <v-window-item value="tab1">
-        <v-card color="basil" flat>
-          <DistGuide />
-        </v-card>
+        <v-card color="basil" flat> <MyoneGuide /> </v-card>
       </v-window-item>
       <v-window-item value="tab2">
         <v-card color="basil" flat> <ApiGuide /> </v-card>
       </v-window-item>
       <v-window-item value="tab3">
-        <v-card color="basil" flat> <MyoneGuide /> </v-card>
+        <v-card color="basil" flat>
+          <DistGuide />
+        </v-card>
       </v-window-item>
     </v-window>
   </v-card>
@@ -31,11 +31,11 @@ import MyoneGuide from './MyoneGuide.vue';
 export default defineComponent({
   components: { DistGuide, ApiGuide, MyoneGuide },
   setup() {
-    const tab = ref('tab1');
+    const tab = ref('tab0');
     const items = ref([
-      { id: 'tab1', name: '배포' },
+      { id: 'tab1', name: '공통유틸' },
       { id: 'tab2', name: 'Api' },
-      { id: 'tab3', name: '공통유틸' },
+      { id: 'tab3', name: '배포' },
     ]);
 
     const text = ref(

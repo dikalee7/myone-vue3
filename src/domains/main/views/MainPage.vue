@@ -23,20 +23,21 @@
 import { defineComponent } from 'vue';
 import MainContent from '@/domains/main/components/MainContent.vue';
 import useCtinfo from '@/domains/main/composables/ctinfo';
+import useUtils from '@/composables/utils';
 
 export default defineComponent({
   components: { MainContent },
   setup() {
+    const { cmn, useMo } = useUtils();
     const ctinfos = useCtinfo();
-    return { ...ctinfos };
+    return { cmn, mo: useMo(), ...ctinfos };
   },
   methods: {
     fnGoPage(p: any) {
       if (p.name == 'main') {
-        this.$swal({
+        this.mo.alert({
           title: '준비중',
-          html: '아직 제공되지 않습니다.',
-          showCloseButton: true,
+          message: '아직 제공되지 않습니다.',
         });
       } else {
         this.$router.push({ name: p.name, params: p.params });

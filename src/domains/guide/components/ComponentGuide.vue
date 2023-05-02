@@ -3,30 +3,6 @@
     <v-card
       :theme="theme"
       :color="cardColor"
-      title="SelectComp"
-      class="mb-3"
-      v-if="sGuid == 'A' || sGuid == 'SelectComp'"
-    >
-      <v-card-subtitle>
-        <v-chip class="ma-0" variant="elevated">
-          <v-icon start icon="mdi-alert-circle-check-outline"></v-icon>
-          전역 컴포넌트
-        </v-chip>
-      </v-card-subtitle>
-      <v-card-text>셀렉트박스</v-card-text>
-      <v-divider></v-divider>
-      <SampleButton @goSample="fnOpenSample('sample_select')" />
-      <v-card :color="cardColor" class="pa-1">
-        <v-card-text class="bg-grey-darken-4 vSpace">
-          <pre>
-  {{ selectCompGuide }}
-          </pre>
-        </v-card-text>
-      </v-card>
-    </v-card>
-    <v-card
-      :theme="theme"
-      :color="cardColor"
       title="MyoneHeader"
       class="mb-3"
       v-if="sGuid == 'A' || sGuid == 'MyoneHeader'"
@@ -113,6 +89,31 @@ hideHome : 홈 버튼 숨김
         <v-card-text class="bg-grey-darken-4 vSpace">
           <pre>
   {{ popupHeaderGuide }}
+          </pre>
+        </v-card-text>
+      </v-card>
+    </v-card>
+
+    <v-card
+      :theme="theme"
+      :color="cardColor"
+      title="SelectComp"
+      class="mb-3"
+      v-if="sGuid == 'A' || sGuid == 'SelectComp'"
+    >
+      <v-card-subtitle>
+        <v-chip class="ma-0" variant="elevated">
+          <v-icon start icon="mdi-alert-circle-check-outline"></v-icon>
+          전역 컴포넌트
+        </v-chip>
+      </v-card-subtitle>
+      <v-card-text>셀렉트박스</v-card-text>
+      <v-divider></v-divider>
+      <SampleButton @goSample="fnOpenSample('sample_select')" />
+      <v-card :color="cardColor" class="pa-1">
+        <v-card-text class="bg-grey-darken-4 vSpace">
+          <pre>
+  {{ selectCompGuide }}
           </pre>
         </v-card-text>
       </v-card>

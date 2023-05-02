@@ -9,7 +9,7 @@ export default [
     meta: {
       isLoading: true,
       continueLoading: false,
-      title: '개발 가이드',
+      title: '가이드',
     },
   },
 
@@ -40,7 +40,7 @@ export default [
       import(
         /* webpackChunkName: "guide" */ '@/domains/guide/views/MyoneGuide.vue'
       ),
-    meta: { isLoading: true, continueLoading: false, title: '공통 유틸' },
+    meta: { isLoading: true, continueLoading: false, title: '공통' },
   },
 
   {

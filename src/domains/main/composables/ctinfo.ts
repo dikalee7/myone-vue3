@@ -16,19 +16,14 @@ export default function () {
         empr: { name: 'guide', params: {} },
       },
       {
-        name: '배포',
-        emnm: 'goPage',
-        empr: { name: 'distGuide', params: {} },
-      },
-      {
-        name: 'API',
-        emnm: 'goPage',
-        empr: { name: 'apiGuide', params: {} },
-      },
-      {
         name: '공통',
         emnm: 'goPage',
         empr: { name: 'myoneGuide', params: {} },
+      },
+      {
+        name: '코딩샘플',
+        emnm: 'goPage',
+        empr: { name: 'sampleBasic', params: {} },
       },
     ],
   });

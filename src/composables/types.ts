@@ -9,8 +9,8 @@ export interface IFCmn {
 
 export interface IFMo {
   /** Description : Page Loading */
-  alert: (o: IFConfirmRequset) => Promise<unknown>;
-  confirm: (o: IFConfirmRequset) => Promise<unknown>;
+  alert: (o: IFConfirmRequset) => Promise<boolean>;
+  confirm: (o: IFConfirmRequset) => Promise<boolean>;
 }
 
 export interface IFUtils {

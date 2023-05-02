@@ -23,14 +23,14 @@ export default function (): IFMo {
     o.options = o.options ?? {};
     o.options = Object.assign(o.options, { noconfirm: true });
     globalProperties.$emitter.emit('showAlert', o);
-    return callback();
+    return callback() as Promise<boolean>;
   };
 
   const confirm = (o: IFConfirmRequset) => {
     o.options = o.options ?? {};
     o.options = Object.assign(o.options, { noconfirm: false });
     globalProperties.$emitter.emit('showAlert', o);
-    return callback();
+    return callback() as Promise<boolean>;
   };
 
   return { alert, confirm };
