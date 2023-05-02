@@ -169,7 +169,7 @@ export default defineComponent({
   methods: {
     emViewImg(img: string) {
       this.vImg = img;
-      this.reveal = true;
+      //this.reveal = true;
     },
   },
 });
