@@ -1,9 +1,9 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
-import useCmn from '@/composables/cmn';
+import useUtils from '@/composables/utils';
 import { IFPublicApiResult } from '@/api/types/publicApi';
 
 export default function () {
-  const $utils = useCmn();
+  const $utils = useUtils();
   const axiosConfig: AxiosRequestConfig = {
     baseURL: process.env.VUE_APP_PUBLIC_API_URL,
     timeout: 5000,

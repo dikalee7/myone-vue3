@@ -5,7 +5,6 @@ export default function () {
     getCurrentInstance().appContext.config.globalProperties;
 
   const guideList = ref([
-    { gbn: 'ALL', name: '전체', value: 'A' },
     { gbn: 'COMP', name: '헤더-MyoneHeader', value: 'MyoneHeader' },
     { gbn: 'COMP', name: '팝업헤더-PopupHeader', value: 'PopupHeader' },
     { gbn: 'COMP', name: '셀렉트박스-SelectComp', value: 'SelectComp' },

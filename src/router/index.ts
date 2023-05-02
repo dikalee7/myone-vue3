@@ -3,10 +3,10 @@ import SampleRouter from '@/domains/sample/router/index';
 import GuideRouter from '@/domains/guide/router/index';
 import MainRouter from '@/domains/main/router/index';
 import TrafficRouter from '@/domains/traffic/router/index';
-import useCmn from '@/composables/cmn';
+import useUtils from '@/composables/utils';
 import { IFHeader } from '@/store/modules/headerInfo';
 
-const $utils = useCmn();
+const $utils = useUtils();
 const rt = createRouter({
   history: createWebHistory(),
   routes: [

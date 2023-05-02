@@ -15,15 +15,6 @@
                 class="text-none"
                 append-icon="mdi-arrow-right-bold"
                 variant="text"
-                @click="fnGoPage('sampleBasic')"
-              >
-                Basic
-              </v-btn>
-              <v-btn
-                border
-                class="text-none"
-                append-icon="mdi-arrow-right-bold"
-                variant="text"
                 @click="fnOpenGuidePop('comp_pop')"
               >
                 컴포넌트
@@ -37,15 +28,24 @@
               >
                 유틸
               </v-btn>
+              <v-btn
+                border
+                class="text-none"
+                append-icon="mdi-arrow-right-bold"
+                variant="text"
+                @click="fnGoPage('sampleBasic')"
+              >
+                코딩샘플
+              </v-btn>
             </v-col>
           </v-row>
         </v-card-actions>
-        <!-- <v-sheet width="90%" class="mx-auto">
+        <v-sheet width="90%" class="mx-auto">
           <SelectComp
             :selectCompData="selectCompData"
             @changeValue="(v) => (selectedValue = v)"
           />
-        </v-sheet> -->
+        </v-sheet>
       </v-card>
 
       <ComponentGuide :selectedGuid="selectedValue" />
@@ -78,7 +78,7 @@ export default defineComponent({
       items: _this.guideList.value.map((it) => {
         return { name: it.name, value: it.value };
       }),
-      defaultValue: 'A',
+      defaultValue: 'MyoneHeader',
     });
     //AlertUtil
 
