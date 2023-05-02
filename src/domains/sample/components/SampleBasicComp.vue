@@ -28,6 +28,7 @@
             cover
             :src="require(`/src/assets/image/guide/${item.vtg}`)"
             v-if="item.gbn == 'img'"
+            @click="fnViewImage(item.vtg)"
           ></v-img>
 
           <v-card-text
@@ -50,6 +51,7 @@ import { defineComponent } from 'vue';
 
 export default defineComponent({
   components: { TableView },
+  emits: ['viewImg'],
   props: {
     cardInfo: {
       type: Object,
@@ -57,6 +59,11 @@ export default defineComponent({
   },
   setup() {
     return {};
+  },
+  methods: {
+    fnViewImage(img: string) {
+      this.$emit('viewImg', img);
+    },
   },
 });
 </script>

@@ -6,11 +6,41 @@
       prepend-icon="mdi-cube"
     >
       <v-expansion-panels variant="default" class="pa-0 mb-3" v-model="panel">
-        <SampleBasicComp :cardInfo="directoryInfo" />
-        <SampleBasicComp :cardInfo="codingInfo" />
+        <SampleBasicComp :cardInfo="directoryInfo" @viewImg="emViewImg" />
+        <SampleBasicComp :cardInfo="codingInfo" @viewImg="emViewImg" />
       </v-expansion-panels>
     </v-card>
   </v-container>
+  <v-dialog v-model="reveal" transition="dialog-bottom-transition">
+    <v-sheet
+      elevation="12"
+      rounded="lg"
+      height="100%"
+      width="100%"
+      class="pa-4 text-center mx-auto"
+    >
+      <v-img
+        width="100%"
+        height="100%"
+        :src="require(`/src/assets/image/guide/${vImg}`)"
+      ></v-img>
+
+      <v-divider></v-divider>
+
+      <div class="pa-4 text-end">
+        <v-btn
+          class="text-none"
+          color="medium-emphasis"
+          min-width="92"
+          rounded
+          variant="outlined"
+          @click="reveal = false"
+        >
+          Close
+        </v-btn>
+      </div>
+    </v-sheet>
+  </v-dialog>
 </template>
 
 <script lang="ts">
@@ -24,7 +54,6 @@ export default defineComponent({
   setup() {
     const { cmn, useMo } = useUtils();
 
-    //1. data, computed는 vue3에서 새로 제공되는 composition api setup을 이용하는 것으로 함
     const panel = ref([0]);
     const directoryInfo = ref({
       title: '디렉토리 구조',
@@ -132,9 +161,27 @@ export default defineComponent({
         },
       ],
     });
-    return { cmn, mo: useMo(), panel, directoryInfo, codingInfo };
+
+    const reveal = ref(false);
+    const vImg = ref('directory.jpg');
+    return { cmn, mo: useMo(), panel, directoryInfo, codingInfo, reveal, vImg };
+  },
+  methods: {
+    emViewImg(img: string) {
+      this.vImg = img;
+      this.reveal = true;
+    },
   },
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+.v-card--reveal {
+  top: 65px;
+  bottom: 0;
+  opacity: 1 !important;
+  position: absolute;
+  width: 100%;
+  z-index: 200;
+}
+</style>
