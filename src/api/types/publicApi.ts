@@ -26,6 +26,7 @@ export interface IFBillInfoDetail {
   procDt: string;
   procStageCd: string;
   proposerKind: string;
+  proposeDt: string;
 }
 
 export interface IFPublicApiResponse {
