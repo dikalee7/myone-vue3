@@ -79,8 +79,6 @@ export default defineComponent({
       );
 
       this.listData = response.data.reduce((p, c) => {
-        console.log('p==>', p);
-        console.log('c==>', c);
         p.push(
           {
             title: `no.${c.billNo} ${c.proposeDt}`,
@@ -90,7 +88,6 @@ export default defineComponent({
         );
         return p;
       }, []);
-      console.log(JSON.stringify(response, null, 2));
     },
     fnOpenPop() {
       this.dialog = true;
