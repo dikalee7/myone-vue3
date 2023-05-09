@@ -1,50 +1,67 @@
 /**
  * 요청 메시지 명세
- * numOfRows 한 페이지 결과 수(9999)
- * pageNo	페이지 번호(9999)
- * mem_name_check	발의자 검색구분
- *   1.대표발의 G01
- *   2.1인발의 G02
- *   3.공동발의 G03
- * mem_name	발의자
- * hj_nm	발의자 한자
+ * page : page index
+ * perPage	: page size
+ * returnType : JSON or XML (기본값: JSON)
  */
-export interface IFBillInfoReq {
-  numOfRows?: number;
-  pageNo?: number;
-  mem_name_check?: string;
-  mem_name?: string;
-  hj_nm?: string;
+export interface IFPublicServiceReq {
+  page?: number;
+  perPage?: number;
+  returnType?: string;
 }
 
-export interface IFBillInfoDetail {
-  billId: string;
-  billName: string;
-  billNo: number;
-  generalResult: string;
-  passGubn: string;
-  procDt: string;
-  procStageCd: string;
-  proposerKind: string;
-  proposeDt: string;
+interface IFPublicBase {
+  page: number;
+  perPage: number;
+  totalCount: number;
+  currentCount: number;
+  matchCount: number;
 }
 
-export interface IFPublicApiResponse {
-  response: {
-    header: {
-      resultCode: string;
-      resultMsg: string;
-    };
-    body: {
-      items: {
-        item: [];
-      };
-    };
-  };
+export interface IFPublicService extends IFPublicBase {
+  data: [
+    {
+      부서명: string;
+      상세조회URL: string;
+      서비스ID: string;
+      서비스명: string;
+      서비스목적: string;
+      선정기준: string;
+      소관기관명: string;
+      소관기관코드: string;
+      신청기한: string;
+      신청방법: string;
+      조회수: number;
+      지원내용: string;
+      지원대상: string;
+      지원유형: string;
+    },
+  ];
+}
+
+export interface IFPublicServiceDetail extends IFPublicBase {
+  SVC_ID: string;
+  지원유형: string;
+  서비스명: string;
+  서비스목적: string;
+  신청기한: string;
+  지원대상: string;
+  선정기준: string;
+  지원내용: string;
+  신청방법: string;
+  구비서류: string;
+  접수기관명: string;
+  문의처전화번호: string;
+  온라인신청사이트URL: string;
+  수정일시: string;
+  소관기관명: string;
+  행정규칙: string;
+  자치법규: string;
+  법령: string;
 }
 
 export interface IFPublicApiResult<T> {
-  resultCode: string;
-  resultMsg: string;
-  data: T[];
+  status: number;
+  statusText: string;
+  data: T;
 }

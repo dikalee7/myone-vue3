@@ -7,7 +7,7 @@ import { computed, defineComponent, ref } from 'vue';
 
 /* 공통(cmn), 알럿컨펌(mo)제공
 composition api setup과 option api 에서 모두 사용 가능하도록 composable 함수로 제공 */
-import useUtils from '@/composables/utils';
+import useCmn from '@/domains/sample/composables/sampleCmn';
 
 export default defineComponent({
   props: {
@@ -17,13 +17,13 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const { cmn, useMo } = useUtils();
+    const { cmn, mo } = useCmn();
     const data1 = ref('data1');
     const data2 = ref('data2');
     const computed1 = computed(() => {
       return props.prop1 + 1;
     });
-    return { cmn, mo: useMo(), data1, data2, computed1 };
+    return { cmn, mo, data1, data2, computed1 };
   },
   mounted() {
     this.fnInit();

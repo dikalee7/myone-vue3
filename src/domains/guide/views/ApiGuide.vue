@@ -24,9 +24,9 @@
           <v-card-text class="bg-grey-darken-4 mt-1 vSpace">
             <pre>
 async callBillInfo() {
-      const response: AxiosResponse &lt;IFBillInfoDetail[]&gt;  = await publicApiCall(
-        '/9710000/BillInfoService2/getBillInfoList',
-        { numOfRows: 2 },
+      const response: AxiosResponse &lt;IFPublicService&gt;  = await publicApiCall(
+        '/gov24/v1/serviceList',
+        { page: 2, perPage: 10 },
       );
 }
             </pre>
@@ -50,13 +50,15 @@ async callBillInfo() {
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 import { publicApiCall } from '@/api/index';
-import { IFBillInfoDetail } from '@/api/types/publicApi';
+import { IFPublicService } from '@/api/types/publicApi';
 import { AxiosResponse } from 'axios';
 import TableView, { TB_THEME, IFTbData } from '@/components/ui/TableView.vue';
+import useCmn from '@/domains/guide/composables/guideCmn';
 
 export default defineComponent({
   components: { TableView },
   setup() {
+    const { cmn, mo } = useCmn();
     const reveal = ref(false);
     const rsltJson = ref('');
     const cmdCls = ref('bg-grey-darken-4 mt-1 vSpace vJson');
@@ -92,13 +94,13 @@ export default defineComponent({
       tdInfo,
     };
 
-    return { reveal, rsltJson, cmdCls, tbData };
+    return { cmn, mo, reveal, rsltJson, cmdCls, tbData };
   },
   methods: {
     async callBillInfo() {
-      const response: AxiosResponse<IFBillInfoDetail[]> = await publicApiCall(
-        '/9710000/BillInfoService2/getBillInfoList',
-        { numOfRows: 2 },
+      const response: AxiosResponse<IFPublicService> = await publicApiCall(
+        '/gov24/v1/serviceList',
+        { page: 1, perPage: 10 },
       );
 
       this.rsltJson = JSON.stringify(response, null, 2);

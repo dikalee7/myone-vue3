@@ -29,21 +29,10 @@ export default function () {
 
   //응답 인터셉터 추가
   instance.interceptors.response.use(
-    (response): any => {
+    (response: IFPublicApiResult<any>): any => {
       //응답에 대한 로직 작성
       $utils.cmn.setLoading(false);
-      const result: IFPublicApiResult<any> = {
-        ...response.data.response.header,
-        data: response.data.response.body.items.item,
-      };
-
-      if (result.resultCode != '00') {
-        //응답코드 '00' 성공이 아닌 경우 처리
-        alert(result.resultMsg);
-        return false;
-      } else {
-        return result;
-      }
+      return response;
     },
 
     (error) => {

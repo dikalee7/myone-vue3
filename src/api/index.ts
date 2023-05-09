@@ -1,5 +1,5 @@
 import queryString from 'query-string';
-import publicApi from './instances/publicApi';
+import publicApi from './instances/publicApiInst';
 
 const publicApiInst = publicApi().instance;
 

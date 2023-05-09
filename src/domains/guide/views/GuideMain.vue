@@ -24,6 +24,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
+import useCmn from '@/domains/guide/composables/guideCmn';
 import ApiGuide from './ApiGuide.vue';
 import DistGuide from './DistGuide.vue';
 import MyoneGuide from './MyoneGuide.vue';
@@ -31,6 +32,7 @@ import MyoneGuide from './MyoneGuide.vue';
 export default defineComponent({
   components: { DistGuide, ApiGuide, MyoneGuide },
   setup() {
+    const { cmn, mo } = useCmn();
     const tab = ref('tab0');
     const items = ref([
       { id: 'tab1', name: '공통유틸' },
@@ -42,7 +44,7 @@ export default defineComponent({
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
     );
 
-    return { tab, items, text };
+    return { cmn, mo, tab, items, text };
   },
 });
 </script>
