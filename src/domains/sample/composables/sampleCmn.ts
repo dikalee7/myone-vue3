@@ -5,8 +5,7 @@ export default function () {
   // const globalProperties =
   //   getCurrentInstance().appContext.config.globalProperties;
 
-  const { cmn, useMo } = useUtils();
-  const mo = useMo();
+  const { cmn, mo } = useUtils();
 
   const testVal = ref('testVal');
 

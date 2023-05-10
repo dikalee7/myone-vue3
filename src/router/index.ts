@@ -2,6 +2,7 @@ import { createWebHistory, createRouter } from 'vue-router';
 import SampleRouter from '@/domains/sample/router/index';
 import GuideRouter from '@/domains/guide/router/index';
 import MainRouter from '@/domains/main/router/index';
+import BenfRouter from '@/domains/benf/router/index';
 import TrafficRouter from '@/domains/traffic/router/index';
 import useUtils from '@/composables/utils';
 import { IFHeader } from '@/store/modules/headerInfo';
@@ -35,6 +36,7 @@ const rt = createRouter({
     ...SampleRouter,
     ...GuideRouter,
     ...MainRouter,
+    ...BenfRouter,
     ...TrafficRouter,
   ],
 });

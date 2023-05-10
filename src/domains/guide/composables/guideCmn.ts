@@ -5,8 +5,7 @@ export default function () {
   // const globalProperties =
   //   getCurrentInstance().appContext.config.globalProperties;
 
-  const { cmn, useMo } = useUtils();
-  const mo = useMo();
+  const { cmn, mo } = useUtils();
 
   const guideList = ref([
     { gbn: 'COMP', name: '헤더-MyoneHeader', value: 'MyoneHeader' },

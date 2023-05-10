@@ -13,9 +13,8 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 import useCmn from '@/domains/sample/composables/sampleCmn';
-import { publicApiCall } from '@/api/index';
-import { IFPublicService } from '@/api/types/publicApi';
-import { AxiosResponse } from 'axios';
+import { pubApiCall } from '@/api/index';
+import { IFPubService } from '@/api/types/pubApi';
 import ListComp from '@/components/vueti/ListComp.vue';
 
 export default defineComponent({
@@ -73,12 +72,12 @@ export default defineComponent({
       ];
     },
     async callPublicService() {
-      const response: AxiosResponse<IFPublicService> = await publicApiCall(
-        '/gov24/v1/serviceList',
-        { page: 1, perPage: 10 },
-      );
+      const response = await pubApiCall<IFPubService>('/gov24/v1/serviceList', {
+        page: 1,
+        perPage: 10,
+      });
 
-      this.listData = response.data.data.reduce((p, c) => {
+      this.listData = response.data.reduce((p, c) => {
         p.push(
           {
             title: c['서비스명'],
