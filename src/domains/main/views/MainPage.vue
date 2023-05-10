@@ -28,9 +28,9 @@ import useUtils from '@/composables/utils';
 export default defineComponent({
   components: { MainContent },
   setup() {
-    const { cmn, useMo } = useUtils();
+    const { cmn, mo } = useUtils();
     const ctinfos = useCtinfo();
-    return { cmn, mo: useMo(), ...ctinfos };
+    return { cmn, mo, ...ctinfos };
   },
   methods: {
     fnGoPage(p: any) {

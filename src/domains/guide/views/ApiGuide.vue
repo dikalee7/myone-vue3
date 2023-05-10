@@ -24,9 +24,9 @@
           <v-card-text class="bg-grey-darken-4 mt-1 vSpace">
             <pre>
 async callBillInfo() {
-      const response: AxiosResponse &lt;IFBillInfoDetail[]&gt;  = await publicApiCall(
-        '/9710000/BillInfoService2/getBillInfoList',
-        { numOfRows: 2 },
+      const response = await pubApiCall&lt;IFPubService&gt;(
+        '/gov24/v1/serviceList',
+        { page: 1, perPage: 10, },
       );
 }
             </pre>
@@ -49,14 +49,15 @@ async callBillInfo() {
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import { publicApiCall } from '@/api/index';
-import { IFBillInfoDetail } from '@/api/types/publicApi';
-import { AxiosResponse } from 'axios';
+import { pubApiCall } from '@/api/index';
+import { IFPubService } from '@/api/types/pubApi';
 import TableView, { TB_THEME, IFTbData } from '@/components/ui/TableView.vue';
+import useCmn from '@/domains/guide/composables/guideCmn';
 
 export default defineComponent({
   components: { TableView },
   setup() {
+    const { cmn, mo } = useCmn();
     const reveal = ref(false);
     const rsltJson = ref('');
     const cmdCls = ref('bg-grey-darken-4 mt-1 vSpace vJson');
@@ -75,14 +76,19 @@ export default defineComponent({
       },
       {
         item: 'function',
-        desc: `publicApiCall(url, param) 
-          <br /> - API 호출을 위한 공통 함수
+        desc: `pubApiCall&lt;T&gt;(uri, param, errPage, errDirect) 
+          <br /> API 호출을 위한 공통 함수
+          <br /> - uri : api uri
+          <br /> - param : request param
+          <br /> - errPage : 에러 발생시 특정 페이지로 이동되어야 할 경우 page router name (필수값 X) 
+          <br /> - errDirect : 에러 발생시 직접 처리 해야할 경우 true (필수값 X) 
         `,
       },
       {
         item: 'response type',
-        desc: `AxiosResponse<T> 
-          <br /> - AxiosResponse의 Generic값으로 전달
+        desc: `pubApiCall&lt;T&gt; 
+          <br /> - 호출 시 Generic값으로 전달
+          <br /> - type을 지정하지 않아도 무방하나 응답값에대한 타입추론 불가함
         `,
       },
     ];
@@ -92,15 +98,14 @@ export default defineComponent({
       tdInfo,
     };
 
-    return { reveal, rsltJson, cmdCls, tbData };
+    return { cmn, mo, reveal, rsltJson, cmdCls, tbData };
   },
   methods: {
     async callBillInfo() {
-      const response: AxiosResponse<IFBillInfoDetail[]> = await publicApiCall(
-        '/9710000/BillInfoService2/getBillInfoList',
-        { numOfRows: 2 },
-      );
-
+      const response = await pubApiCall<IFPubService>('/gov24/v1/serviceList', {
+        page: 1,
+        perPage: 10,
+      });
       this.rsltJson = JSON.stringify(response, null, 2);
     },
   },

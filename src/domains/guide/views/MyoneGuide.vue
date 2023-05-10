@@ -58,9 +58,9 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
+import useCmn from '@/domains/guide/composables/guideCmn';
 import ComponentGuide from '@/domains/guide/components/ComponentGuide.vue';
 import UtilGuide from '@/domains/guide/components/UtilGuide.vue';
-import guideCmn from '@/domains/guide/composables/index';
 import MyoneCompPop from '@/domains/guide/views/MyoneCompPop.vue';
 import MyoneUtilPop from '@/domains/guide/views/MyoneUtilPop.vue';
 
@@ -72,19 +72,21 @@ export default defineComponent({
     MyoneUtilPop,
   },
   setup() {
-    const _this = guideCmn();
+    const { cmn, mo, guideList } = useCmn();
     const selectCompData = ref({
       label: '구분 선택',
-      items: _this.guideList.value.map((it) => {
+      items: guideList.value.map((it) => {
         return { name: it.name, value: it.value };
       }),
-      defaultValue: 'MyoneHeader',
+      defaultValue: 'ListComp',
     });
     //AlertUtil
 
     const selectedValue = ref(selectCompData.value.defaultValue);
 
     return {
+      cmn,
+      mo,
       selectCompData,
       selectedValue,
     };

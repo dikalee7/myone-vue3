@@ -1,8 +1,11 @@
-import { getCurrentInstance, ref } from 'vue';
+import { ref } from 'vue';
+import useUtils from '@/composables/utils';
 
 export default function () {
-  const globalProperties =
-    getCurrentInstance().appContext.config.globalProperties;
+  // const globalProperties =
+  //   getCurrentInstance().appContext.config.globalProperties;
+
+  const { cmn, mo } = useUtils();
 
   const guideList = ref([
     { gbn: 'COMP', name: '헤더-MyoneHeader', value: 'MyoneHeader' },
@@ -12,5 +15,5 @@ export default function () {
     { gbn: 'UTIL', name: '공통 함수', value: 'UtilsCmn' },
     { gbn: 'UTIL', name: '알림-Alert', value: 'AlertUtil' },
   ]);
-  return { guideList, ...globalProperties };
+  return { cmn, mo, guideList };
 }

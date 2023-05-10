@@ -47,12 +47,12 @@
 import { defineComponent, ref } from 'vue';
 import SampleBasicComp from '../components/SampleBasicComp.vue';
 import { TB_THEME } from '@/components/ui/TableView.vue';
-import useUtils from '@/composables/utils';
+import useCmn from '@/domains/sample/composables/sampleCmn';
 
 export default defineComponent({
   components: { SampleBasicComp },
   setup() {
-    const { cmn, useMo } = useUtils();
+    const { cmn, mo } = useCmn();
 
     const panel = ref([0]);
     const directoryInfo = ref({
@@ -164,7 +164,7 @@ export default defineComponent({
 
     const reveal = ref(false);
     const vImg = ref('directory.jpg');
-    return { cmn, mo: useMo(), panel, directoryInfo, codingInfo, reveal, vImg };
+    return { cmn, mo, panel, directoryInfo, codingInfo, reveal, vImg };
   },
   methods: {
     emViewImg(img: string) {

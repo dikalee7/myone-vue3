@@ -14,5 +14,5 @@ export default function (): IFUtils {
     },
   };
 
-  return { cmn, _, useMo };
+  return { cmn, _, mo: useMo() };
 }

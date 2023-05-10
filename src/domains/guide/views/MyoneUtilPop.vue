@@ -18,6 +18,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
+import useCmn from '@/domains/guide/composables/guideCmn';
 import UtilGuide from '../components/UtilGuide.vue';
 
 export default defineComponent({
@@ -29,10 +30,11 @@ export default defineComponent({
     },
   },
   setup() {
+    const { cmn, mo } = useCmn();
     const dialog = ref(false);
     const title = ref('유틸 가이드');
 
-    return { dialog, title };
+    return { cmn, mo, dialog, title };
   },
   methods: {
     fnOpenPop() {

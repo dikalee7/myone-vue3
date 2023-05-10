@@ -7,7 +7,9 @@
       <div>
         <v-card-title class="text-h6"> {{ ctInfo.title }} </v-card-title>
 
-        <v-card-subtitle> {{ ctInfo.subtitle }} </v-card-subtitle>
+        <v-card-subtitle v-if="ctInfo.subtitle">
+          {{ ctInfo.subtitle }}
+        </v-card-subtitle>
 
         <!-- eslint-disable -->
         <v-card-text v-html="sanitizeText"></v-card-text>

@@ -12,30 +12,29 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
+import useCmn from '@/domains/sample/composables/sampleCmn';
+import { pubApiCall } from '@/api/index';
+import { IFPubService } from '@/api/types/pubApi';
 import ListComp from '@/components/vueti/ListComp.vue';
-import useUtils from '@/composables/utils';
-import { publicApiCall } from '@/api/index';
-import { IFBillInfoDetail } from '@/api/types/publicApi';
-import { AxiosResponse } from 'axios';
 
 export default defineComponent({
   components: {
     ListComp,
   },
   setup() {
-    const { cmn, useMo } = useUtils();
+    const { cmn, mo } = useCmn();
     const dialog = ref(false);
     const title = ref('리스트 샘플');
     const listData = ref([]);
 
-    return { cmn, mo: useMo(), title, dialog, listData };
+    return { cmn, mo, title, dialog, listData };
   },
   mounted() {
     this.fnInit();
   },
   methods: {
     fnInit() {
-      this.callBillInfo();
+      this.callPublicService();
       this.listData = [
         { type: 'subheader', title: '의안 목록' },
         {
@@ -72,17 +71,17 @@ export default defineComponent({
         },
       ];
     },
-    async callBillInfo() {
-      const response: AxiosResponse<IFBillInfoDetail[]> = await publicApiCall(
-        '/9710000/BillInfoService2/getBillInfoList',
-        {},
-      );
+    async callPublicService() {
+      const response = await pubApiCall<IFPubService>('/gov24/v1/serviceList', {
+        page: 1,
+        perPage: 10,
+      });
 
       this.listData = response.data.reduce((p, c) => {
         p.push(
           {
-            title: `no.${c.billNo} ${c.proposeDt}`,
-            subtitle: c.billName,
+            title: c['서비스명'],
+            subtitle: c['서비스목적'],
           },
           { type: 'divider', inset: false },
         );

@@ -7,13 +7,13 @@ import { loadFonts } from './plugins/webfontloader';
 import PopupHeader from '@/components/layout/PopupHeader.vue';
 import ActionButton from '@/components/layout/ActionButton.vue';
 import SelectComp from '@/components/vueti/SelectComp.vue';
-// import useUtils from '@/composables/cmn';
-import mitt from 'mitt';
+// import mitt from 'mitt';
+import emitter from '@/composables/emitter';
 
 loadFonts();
 const app = createApp(App);
 // app.config.globalProperties.$utils = useUtils();
-app.config.globalProperties.$emitter = mitt();
+app.config.globalProperties.$emitter = emitter;
 app.component('PopupHeader', PopupHeader);
 app.component('ActionButton', ActionButton);
 app.component('SelectComp', SelectComp);

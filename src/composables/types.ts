@@ -16,7 +16,7 @@ export interface IFMo {
 export interface IFUtils {
   cmn: IFCmn;
   _: LoDashStatic;
-  useMo: () => IFMo;
+  mo: IFMo;
 }
 
 export interface IFConfirmOptions {

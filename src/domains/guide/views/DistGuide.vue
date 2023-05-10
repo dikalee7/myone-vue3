@@ -351,10 +351,12 @@ server {
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import useCmn from '@/domains/guide/composables/guideCmn';
 
 export default defineComponent({
   setup() {
-    return {};
+    const { cmn, mo } = useCmn();
+    return { cmn, mo };
   },
   data() {
     return {
