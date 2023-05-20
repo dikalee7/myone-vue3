@@ -3,7 +3,7 @@
     <v-dialog v-model="dialog" fullscreen scrollable>
       <v-card>
         <PopupHeader :title="title" @closePopup="fnClosePop" />
-        <v-card-text>상세화면 퍼블 작업 추후 진행 에정</v-card-text>
+        <v-card-text>퍼블 작업 추후 진행 예정</v-card-text>
         <v-card-text class="pa-2 bg-grey-darken-4 mt-1 vSpace">
           <pre><code v-html="rsltJson"></code></pre>
         </v-card-text>
