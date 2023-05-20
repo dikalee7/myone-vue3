@@ -20,28 +20,27 @@ interface IFPublicBase {
   statusText: string;
 }
 
+export interface IFPubServiceData {
+  부서명: string;
+  상세조회URL: string;
+  서비스ID: string;
+  서비스명: string;
+  서비스목적: string;
+  선정기준: string;
+  소관기관명: string;
+  소관기관코드: string;
+  신청기한: string;
+  신청방법: string;
+  조회수: number;
+  지원내용: string;
+  지원대상: string;
+  지원유형: string;
+}
 export interface IFPubService extends IFPublicBase {
-  data: [
-    {
-      부서명: string;
-      상세조회URL: string;
-      서비스ID: string;
-      서비스명: string;
-      서비스목적: string;
-      선정기준: string;
-      소관기관명: string;
-      소관기관코드: string;
-      신청기한: string;
-      신청방법: string;
-      조회수: number;
-      지원내용: string;
-      지원대상: string;
-      지원유형: string;
-    },
-  ];
+  data: [IFPubServiceData];
 }
 
-export interface IFPubServiceDetail extends IFPublicBase {
+export interface IFPubServiceDetailData {
   SVC_ID: string;
   지원유형: string;
   서비스명: string;
@@ -60,6 +59,9 @@ export interface IFPubServiceDetail extends IFPublicBase {
   행정규칙: string;
   자치법규: string;
   법령: string;
+}
+export interface IFPubServiceDetail extends IFPublicBase {
+  data: [IFPubServiceDetailData];
 }
 
 export interface IFSupportConditions extends IFPublicBase {
