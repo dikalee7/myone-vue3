@@ -5,7 +5,7 @@
       color="orange-lighten-5"
       size="small"
       variant="elevated"
-      prepend-icon="mdi-lightbulb-outline"
+      :prepend-icon="pIcon"
       @click="fnClickButton"
     >
       <!-- append-icon="mdi-arrow-right-bold" -->
@@ -27,6 +27,10 @@ export default defineComponent({
     btxt: {
       type: String,
       default: 'sample',
+    },
+    pIcon: {
+      type: String,
+      default: 'mdi-lightbulb-outline',
     },
   },
   setup() {
