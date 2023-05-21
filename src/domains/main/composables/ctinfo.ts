@@ -51,15 +51,15 @@ export default function () {
 
   const contCtInfo2: Ref<IFCtInfo> = ref({
     title: '',
-    subtitle: '개발 예정',
-    text: '컨텐츠 구상 중',
+    subtitle: 'MINE',
+    text: `It's mine!!`,
     image: 'back-traffic.jpg',
     gradient: 'to top right, rgba(125, 46, 9,.8), rgba(250, 115, 52,.8)',
     actions: [
       {
-        name: '이동',
+        name: 'QR',
         emnm: 'goPage',
-        empr: { name: 'main', params: {} },
+        empr: { name: 'qrView', params: {} },
       },
     ],
   });
