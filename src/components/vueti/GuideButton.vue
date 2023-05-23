@@ -18,7 +18,7 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-  emits: ['goSample'],
+  emits: ['actionClick'],
   props: {
     dCls: {
       type: String,
@@ -38,7 +38,7 @@ export default defineComponent({
   },
   methods: {
     fnClickButton() {
-      this.$emit('goSample');
+      this.$emit('actionClick');
     },
   },
 });

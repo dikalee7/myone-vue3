@@ -17,8 +17,8 @@
           </pre>
         </v-card-text>
       </v-card>
-      <SampleButton
-        @goSample="fnShare()"
+      <GuideButton
+        @actionClick="fnShare()"
         :btxt="'kakao'"
         :pIcon="'mdi-share-variant-outline'"
       />
@@ -29,13 +29,13 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 import { QrcodeStream } from 'vue3-qrcode-reader';
-import SampleButton from '@/domains/guide/components/SampleButton.vue';
+import GuideButton from '@/components/vueti/GuideButton.vue';
 import useCmn from '@/domains/mine/composables/mineCmn';
 
 export default defineComponent({
   components: {
     QrcodeStream,
-    SampleButton,
+    GuideButton,
   },
   setup() {
     const { cmn, mo, kakao } = useCmn();

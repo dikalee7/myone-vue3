@@ -109,7 +109,7 @@ hideHome : 홈 버튼 숨김
       </v-card-subtitle>
       <v-card-text>셀렉트박스</v-card-text>
       <v-divider></v-divider>
-      <SampleButton @goSample="fnOpenSample('sample_select')" />
+      <GuideButton @actionClick="fnOpenSample('sample_select')" />
       <v-card :color="cardColor" class="pa-1">
         <v-card-text class="bg-grey-darken-4 vSpace">
           <pre>
@@ -128,7 +128,7 @@ hideHome : 홈 버튼 숨김
     >
       <v-card-text>리스트 공통 가이드</v-card-text>
       <v-divider></v-divider>
-      <SampleButton @goSample="fnOpenSample('sample_list')" />
+      <GuideButton @actionClick="fnOpenSample('sample_list')" />
     </v-card>
     <SampleSelect ref="sample_select" />
     <SampleList ref="sample_list" />
@@ -138,10 +138,10 @@ hideHome : 홈 버튼 숨김
 <script lang="ts">
 import { computed, defineComponent, ref } from 'vue';
 import SampleSelect from '@/domains/sample/views/SampleSelect.vue';
-import SampleButton from './SampleButton.vue';
+import GuideButton from '../../../components/vueti/GuideButton.vue';
 import SampleList from '@/domains/sample/views/SampleList.vue';
 export default defineComponent({
-  components: { SampleSelect, SampleButton, SampleList },
+  components: { SampleSelect, GuideButton, SampleList },
   props: {
     selectedGuid: {
       type: String,
