@@ -1,7 +1,7 @@
 <template>
   <div>
     <qrcode-stream @decode="onDecode" />
-    <v-card theme="dark" color="blue-grey-darken-2" title="" class="ma-2">
+    <v-card theme="dark" color="blue-grey-darken-2" title="" class="ma-1">
       <v-card-subtitle>
         <v-chip class="mt-2 mb-2" variant="elevated">
           <v-icon start icon="mdi-arrow-down-thin-circle-outline"></v-icon>
