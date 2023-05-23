@@ -55,9 +55,15 @@ export default defineComponent({
             text: this.qrCodeData,
             link: {
               // [내 애플리케이션] > [플랫폼] 에서 등록한 사이트 도메인과 일치해야 함
-              mobileWebUrl: 'https://myone.info',
-              webUrl: 'https://myone.info',
+              mobileWebUrl: 'https://www.myone.info',
+              webUrl: 'https://www.myone.info',
             },
+            buttons: [
+              {
+                title: '',
+                link: {},
+              },
+            ],
           });
         } catch (error) {
           this.qrCodeData = error;
