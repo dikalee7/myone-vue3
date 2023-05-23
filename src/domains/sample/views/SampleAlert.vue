@@ -7,15 +7,15 @@
         <v-card-actions class="">
           <v-row align="center" justify="center">
             <v-col cols="auto">
-              <SampleButton
+              <GuideButton
                 :btxt="'alert'"
                 :dCls="'d-inline'"
-                @goSample="fnCall('alert')"
+                @actionClick="fnCall('alert')"
               />
-              <SampleButton
+              <GuideButton
                 :btxt="'confirm'"
                 :dCls="'d-inline'"
-                @goSample="fnCall('confirm')"
+                @actionClick="fnCall('confirm')"
               />
             </v-col>
           </v-row>
@@ -27,12 +27,12 @@
 </template>
 
 <script lang="ts">
-import SampleButton from '@/domains/guide/components/SampleButton.vue';
+import GuideButton from '@/components/vueti/GuideButton.vue';
 import { defineComponent, ref } from 'vue';
 import useCmn from '@/domains/sample/composables/sampleCmn';
 
 export default defineComponent({
-  components: { SampleButton },
+  components: { GuideButton },
   setup() {
     const { cmn, mo } = useCmn();
     const dialog = ref(false);

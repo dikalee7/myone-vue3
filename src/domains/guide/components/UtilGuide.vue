@@ -9,7 +9,7 @@
     >
       <v-card-text>공통 함수</v-card-text>
       <v-divider></v-divider>
-      <SampleButton @goSample="fnOpenSample('sample_utils_cmn')" />
+      <GuideButton @actionClick="fnOpenSample('sample_utils_cmn')" />
     </v-card>
     <v-card
       :theme="theme"
@@ -20,7 +20,7 @@
     >
       <v-card-text>알림(alert, confirm) 공통 가이드</v-card-text>
       <v-divider></v-divider>
-      <SampleButton @goSample="fnOpenSample('sample_alert')" />
+      <GuideButton @actionClick="fnOpenSample('sample_alert')" />
     </v-card>
 
     <SampleAlert ref="sample_alert" />
@@ -32,10 +32,10 @@
 import { defineComponent, ref, computed } from 'vue';
 import SampleAlert from '@/domains/sample/views/SampleAlert.vue';
 import SampleUtilsCmn from '@/domains/sample/views/SampleUtilsCmn.vue';
-import SampleButton from './SampleButton.vue';
+import GuideButton from '../../../components/vueti/GuideButton.vue';
 
 export default defineComponent({
-  components: { SampleButton, SampleAlert, SampleUtilsCmn },
+  components: { GuideButton, SampleAlert, SampleUtilsCmn },
   props: {
     selectedGuid: {
       type: String,
