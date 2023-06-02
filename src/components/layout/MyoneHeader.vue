@@ -47,6 +47,10 @@ export default defineComponent({
       hInfo: computed(() => store.getters['HeaderModule/getHeaderInfo']),
     };
   },
+  // computed: {
+  //   //mapGetters를 이용할때는 아래와 같이 사용함
+  //   ...mapGetters('HeaderModule', { hInfo: 'getHeaderInfo' }),
+  // },
   methods: {
     goBack() {
       this.$router.go(-1);
