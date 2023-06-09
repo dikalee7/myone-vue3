@@ -25,7 +25,7 @@
             <pre>
 async callBillInfo() {
       const response = await pubApiCall&lt;IFPubService&gt;(
-        '/gov24/v1/serviceList',
+        '/v1/serviceList',
         { page: 1, perPage: 10, },
       );
 }
@@ -102,7 +102,7 @@ export default defineComponent({
   },
   methods: {
     async callBillInfo() {
-      const response = await pubApiCall<IFPubService>('/gov24/v1/serviceList', {
+      const response = await pubApiCall<IFPubService>('/v1/serviceList', {
         page: 1,
         perPage: 10,
       });
