@@ -42,7 +42,7 @@ export default defineComponent({
       this.callPublicService();
     },
     async callPublicService() {
-      const response = await pubApiCall<IFPubService>('/gov24/v1/serviceList', {
+      const response = await pubApiCall<IFPubService>('/v1/serviceList', {
         page: 1,
         perPage: 10,
       });

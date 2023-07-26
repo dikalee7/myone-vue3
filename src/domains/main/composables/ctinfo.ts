@@ -66,15 +66,15 @@ export default function () {
 
   const contCtInfo3: Ref<IFCtInfo> = ref({
     title: '',
-    subtitle: '개발 예정',
-    text: '컨텐츠 구상 중',
+    subtitle: 'STOCK',
+    text: '주식 정보',
     image: 'back-travel.jpg',
     gradient: 'to top right, rgba(3, 5, 33,.8), rgba(100, 108, 227,.8)',
     actions: [
       {
-        name: '이동',
+        name: '기업정보',
         emnm: 'goPage',
-        empr: { name: 'main', params: {} },
+        empr: { name: 'stockInfo', params: {} },
       },
     ],
   });

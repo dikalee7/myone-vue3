@@ -10,17 +10,17 @@ export default function () {
   const pubApi = {
     list: {
       name: '공공서비스 목록',
-      uri: '/gov24/v1/serviceList',
+      uri: '/v1/serviceList',
       method: 'get',
     },
     detail: {
       name: '공공서비스 상세내용',
-      uri: '/gov24/v1/serviceDetail',
+      uri: '/v1/serviceDetail',
       method: 'get',
     },
     conditions: {
       name: '공공서비스 지원조건',
-      uri: '/gov24/v1/supportConditions',
+      uri: '/v1/supportConditions',
       method: 'get',
     },
   };

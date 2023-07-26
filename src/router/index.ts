@@ -5,6 +5,7 @@ import MainRouter from '@/domains/main/router/index';
 import BenfRouter from '@/domains/benf/router/index';
 import MineRouter from '@/domains/mine/router/index';
 import TrafficRouter from '@/domains/traffic/router/index';
+import StockRouter from '@/domains/stock/router/index';
 import useUtils from '@/composables/utils';
 import { IFHeader } from '@/store/modules/headerInfo';
 
@@ -40,6 +41,7 @@ const rt = createRouter({
     ...BenfRouter,
     ...TrafficRouter,
     ...MineRouter,
+    ...StockRouter,
   ],
 });
 
