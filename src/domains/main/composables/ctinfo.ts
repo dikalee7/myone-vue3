@@ -72,9 +72,9 @@ export default function () {
     gradient: 'to top right, rgba(3, 5, 33,.8), rgba(100, 108, 227,.8)',
     actions: [
       {
-        name: '시세',
+        name: '기업정보',
         emnm: 'goPage',
-        empr: { name: 'stockPrice', params: {} },
+        empr: { name: 'stockInfo', params: {} },
       },
     ],
   });

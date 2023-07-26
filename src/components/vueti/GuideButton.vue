@@ -2,7 +2,7 @@
   <div :class="dCls">
     <v-btn
       class="ma-2 pa-2"
-      color="orange-lighten-5"
+      :color="bcolor"
       size="small"
       variant="elevated"
       :prepend-icon="pIcon"
@@ -31,6 +31,10 @@ export default defineComponent({
     pIcon: {
       type: String,
       default: 'mdi-lightbulb-outline',
+    },
+    bcolor: {
+      type: String,
+      default: 'orange-lighten-5',
     },
   },
   setup() {
