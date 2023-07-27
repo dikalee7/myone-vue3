@@ -57,5 +57,22 @@
     
   - api 종류별 type interface 파일 분리
     - src/api/types
+      
+    ```
+    // 예) dartApi.ts
+    // dart 기업정보 요청 타입정의
+    export interface IFCompanyReq {
+      corp_code: string;
+    }
+
+    // dart 기업정보 응답 타입정의
+    export interface IFCompanyRes {
+      status: string; //	에러 및 정보 코드	(※메시지 설명 참조)
+      message: string; //	에러 및 정보 메시지	(※메시지 설명 참조)
+      corp_name: string; //	정식명칭	정식회사명칭
+      ...(중략)...
+    }
+    ```
+    
   - api 종류별 호출 메서드 제공
     - src/api/index.ts
