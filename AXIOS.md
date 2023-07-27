@@ -116,7 +116,7 @@
     
     async fnGetDetail(crno: string) {
       const req: IFCompanyReq = { corp_code: crno };
-      const response = await this.stockApiCall<IFCompanyRes>(
+      const response = await this.dartApiCall<IFCompanyRes>(
         this.stockApi.finaStatInfo.uri,
         req,
       );
