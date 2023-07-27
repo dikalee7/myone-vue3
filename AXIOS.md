@@ -112,6 +112,8 @@
     export { dartApiCall };
 
     //호출 예
+    import { IFCompanyReq, IFCompanyRes } from '@/api/types/dartApi';
+    
     async fnGetDetail(crno: string) {
       const req: IFCompanyReq = { corp_code: crno };
       const response = await this.stockApiCall<IFCompanyRes>(
