@@ -74,8 +74,9 @@
     }
     ```
     
-  - api 종류별 호출 메서드 제공
+  - api 종류별 api 메서드 제공
     - src/api/index.ts
+    - 응답 type은 api 메서드 호출시 지정
       
     ```
     // 예) dartApiCall
@@ -109,4 +110,13 @@
     }
     
     export { dartApiCall };
+
+    //호출 예
+    async fnGetDetail(crno: string) {
+      const req: IFCompanyReq = { corp_code: crno };
+      const response = await this.stockApiCall<IFCompanyRes>(
+        this.stockApi.finaStatInfo.uri,
+        req,
+      );
+    }
     ```
