@@ -76,3 +76,37 @@
     
   - api 종류별 호출 메서드 제공
     - src/api/index.ts
+      
+    ```
+    // 예) dartApiCall
+    
+    import dartApi from './instances/dartApiInst';
+    
+    const dartApiInst = dartApi().instance;
+    async function dartApiCall<T>(
+      url: string,
+      param: object,
+      errPage = '',
+      errDirect = false,
+    ): Promise<T> {
+      const response: AxiosResponse<T, any> = await dartApiInst.get(
+        `${url}?${queryString.stringify(param)}&crtfc_key=키정보`,
+      );
+
+      const result = {
+        ...response.data,
+        status: response.status,
+        statusText: response.statusText,
+      };
+
+      return new Promise((resolve) => {
+        if (!errDirect && result.status !== 200) {
+          //실패시 처리로직
+        } else {
+          //성공시 처리로직
+        }
+      });
+    }
+    
+    export { dartApiCall };
+    ```
