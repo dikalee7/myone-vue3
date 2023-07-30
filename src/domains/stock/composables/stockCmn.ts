@@ -1,5 +1,5 @@
 import useUtils from '@/composables/utils';
-import { stockApiCall } from '@/api/index';
+import { stockApiCall, dartApiCall } from '@/api/index';
 export default function () {
   const { cmn, mo } = useUtils();
 
@@ -7,11 +7,6 @@ export default function () {
     priceList: {
       name: '주식 시세 목록',
       uri: '/GetStockSecuritiesInfoService/getStockPriceInfo',
-      method: 'get',
-    },
-    corpBasicInfo: {
-      name: '기업 정보',
-      uri: '/GetCorpBasicInfoService_V2/getCorpOutline_V2',
       method: 'get',
     },
     finaStatInfo: {
@@ -22,6 +17,11 @@ export default function () {
     stocIssuStat: {
       name: '주식 발행 정보',
       uri: '/GetStocIssuInfoService/getStocIssuStat',
+      method: 'get',
+    },
+    corpInfo: {
+      name: '기업 정보',
+      uri: '/company.json',
       method: 'get',
     },
   };
@@ -75,5 +75,5 @@ export default function () {
     return obj;
   };
 
-  return { cmn, mo, stockApi, stockApiCall, xmlToJson };
+  return { cmn, mo, stockApi, stockApiCall, dartApiCall, xmlToJson };
 }
