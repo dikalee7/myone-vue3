@@ -5,6 +5,7 @@ export interface IFActions {
 }
 
 export interface IFCtInfo {
+  id: number;
   title: string;
   subtitle: string;
   text: string;
